@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Education {
     private String id;
-    private String institution_name;
+    public String institution_name;
     private Date startDate;
     private Date endDate;
     private List<String> courses = new ArrayList<>();

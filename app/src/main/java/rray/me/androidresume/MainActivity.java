@@ -2,6 +2,8 @@ package rray.me.androidresume;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import java.util.Date;
 
 import rray.me.androidresume.models.BasicInfo;
 import rray.me.androidresume.models.Education;
+import rray.me.androidresume.models.Project;
 import rray.me.androidresume.models.WorkExperience;
 import rray.me.androidresume.util.DateUtils;
 
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private BasicInfo basicInfo;
     private List<Education> educations;
     private List<WorkExperience> workExperiences;
+    private List<Project> projects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +44,40 @@ public class MainActivity extends AppCompatActivity {
 
     //method setupEducation to display Educations session
     private void setupEducations() {
-        ((TextView) findViewById(R.id.tv_institution_name)).setText(educations.get(0).getInstitution_name());
-        ((TextView) findViewById(R.id.tv_degree)).setText(educations.get(0).getDegree());
-        ((TextView) findViewById(R.id.tv_school_start_end_date)).setText(formatDate(educations.get(0)));
-        ((TextView) findViewById(R.id.tv_education_courses)).setText(bulletFormatString(educations.get(0).getCourses()));
+
+        LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_education_list);
+        for (Education education: educations) {
+            educationLayout.addView(getEducationView(education));
+        }
+
+    }
+
+    private View getEducationView(Education education) {
+//        View view = getLayoutInflater().inflate(R.layout.education_item, null);
+//        ((TextView) findViewById(R.id.tv_institution_name))
+//                .setText(education.getInstitution_name());
+////        ((TextView) findViewById(R.id.tv_degree)).setText(education.getDegree());
+////        ((TextView) findViewById(R.id.tv_school_start_end_date)).setText(formatDate(education));
+////        ((TextView) findViewById(R.id.tv_education_courses)).setText(bulletFormatString(education.getCourses()));
+        View view = getLayoutInflater().inflate(R.layout.education_item, null);
+//        String dateString = DateUtils.dataToString(education.getStartDate()) + " ~ " + DateUtils.dataToString(education.getEndDate());
+//
+//        ((TextView) view.findViewById(R.id.tv_institution_name)).setText(education.getInstitution_name() + " (" + dateString + ")");
+//        ((TextView) view.findViewById(R.id.tv_education_courses)).setText(bulletFormatString(education.getCourses()));
+        return view;
+        //return view;
     }
 
     //method setupWorkExperiences to display Work Experiences session
     private void setupWorkExperiences() {
-        ((TextView) findViewById(R.id.tv_company_name)).setText(workExperiences.get(0).getCompanyName());
-        ((TextView) findViewById(R.id.tv_job_title)).setText(workExperiences.get(0).getJobTitle());
-        ((TextView) findViewById(R.id.tv_job_start_end_date)).setText(formatDate(workExperiences.get(0)));
-        ((TextView) findViewById(R.id.tv_job_description)).setText(bulletFormatString(workExperiences.get(0).getJobDescription()));
+        ((TextView) findViewById(R.id.tv_company_name))
+                .setText(workExperiences.get(0).getCompanyName());
+        ((TextView) findViewById(R.id.tv_job_title))
+                .setText(workExperiences.get(0).getJobTitle());
+        ((TextView) findViewById(R.id.tv_job_start_end_date))
+                .setText(formatDate(workExperiences.get(0)));
+        ((TextView) findViewById(R.id.tv_job_description))
+                .setText(bulletFormatString(workExperiences.get(0).getJobDescription()));
     }
 
 
@@ -73,15 +99,26 @@ public class MainActivity extends AppCompatActivity {
         e1.setStartDate(DateUtils.stringToDate("09/2010"));
         e1.setEndDate(DateUtils.stringToDate("05/2014"));
         e1.setDegree("Bachelor of Computer Science");
-
         List<String> e1Courses = new ArrayList<>();
         e1Courses.add("Database");
         e1Courses.add("Network");
-        e1Courses.add("Operating System");
-
+        e1Courses.add("OS");
         e1.setCourses(e1Courses);
 
         educations.add(e1);
+
+        Education e2 = new Education();
+        e2.setInstitution_name("Harvard");
+        e1.setStartDate(DateUtils.stringToDate("09/2014"));
+        e1.setEndDate(DateUtils.stringToDate("05/2015"));
+        e2.setDegree("Master of Computer Science");
+        List<String> e2Courses = new ArrayList<>();
+        e2Courses.add("Adv Database");
+        e2Courses.add("Adv Network");
+        e2Courses.add("Adv OS");
+        e2.setCourses(e2Courses);
+
+        educations.add(e2);
 
         //fake data for work experience
         workExperiences = new ArrayList<>();
@@ -118,4 +155,6 @@ public class MainActivity extends AppCompatActivity {
 
         return "Something wrong with date";
     }
+
+
 }
