@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_small"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/iv_user_picture"
+                android:layout_toLeftOf="@+id/iv_user_icon"
                 android:gravity="center_vertical">
 
                 <TextView
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/iv_user_picture"
+                android:layout_toLeftOf="@id/iv_user_icon"
                 android:layout_below="@id/ll_user_name_layout"
                 android:text="github.com/abcdefg"/>
 
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/iv_user_picture"
+                android:layout_toLeftOf="@id/iv_user_icon"
                 android:layout_below="@id/tv_github"
                 android:text="rray@hotmail.ca"/>
 
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/iv_user_picture"
+                android:layout_toLeftOf="@id/iv_user_icon"
                 android:layout_below="@id/tv_email"
                 android:text="(123) 456-7890"/>
 
@@ -76,13 +76,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/iv_user_picture"
+                android:layout_toLeftOf="@+id/iv_user_icon"
                 android:layout_below="@id/tv_phone_number"
                 android:text="1234 Fake St"/>
 
 
             <ImageView
-                android:id="@+id/iv_user_picture"
+                android:id="@+id/iv_user_icon"
                 android:layout_width="@dimen/user_picture_size"
                 android:layout_height="@dimen/user_picture_size"
                 android:layout_alignParentRight="true"
