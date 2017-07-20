@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">安卓简历</string>
+
+    <string name="edit_basic_info">编辑基本信息</string>
+
+    <String name="section_education">教育经历</String>
+
+    <string name="add_education">添加教育经历</string>
+    <string name="edit_education">编辑教育经历</string>
+
+    <string name="user_picture">用户图片</string>
+
+
+</resources>

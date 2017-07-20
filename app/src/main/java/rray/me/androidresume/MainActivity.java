@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setupWorkExperiences();
     }
 
+    //method setupBasicInfoUI to display BasicInfo session
     private void setupBasicInfoUI() {
         ((TextView) findViewById(R.id.tv_name)).setText(basicInfo.getName());
         ((TextView) findViewById(R.id.tv_address)).setText(basicInfo.getAddress());
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tv_phone_number)).setText(basicInfo.getPhoneNumber());
     }
 
+    //method setupEducation to display Educations session
     private void setupEducations() {
         ((TextView) findViewById(R.id.tv_institution_name)).setText(educations.get(0).getInstitution_name());
         ((TextView) findViewById(R.id.tv_degree)).setText(educations.get(0).getDegree());
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tv_education_courses)).setText(bulletFormatString(educations.get(0).getCourses()));
     }
 
+    //method setupWorkExperiences to display Work Experiences session
     private void setupWorkExperiences() {
         ((TextView) findViewById(R.id.tv_company_name)).setText(workExperiences.get(0).getCompanyName());
         ((TextView) findViewById(R.id.tv_job_title)).setText(workExperiences.get(0).getJobTitle());
@@ -51,7 +54,10 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tv_job_description)).setText(bulletFormatString(workExperiences.get(0).getJobDescription()));
     }
 
+
+    //method fake data to create fake data for basic info, education and work experience
     private void fakeData() {
+
         //fake data for basic info
         basicInfo = new BasicInfo();
         basicInfo.setName("Chao Wang");
