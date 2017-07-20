@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">AndroidResume</string>
+
+    <string name="edit_basic_info">Edit Basic Info</string>
+
+    <string name="section_education">Education</string>
+
+    <string name="add_education">Add education</string>
+    <string name="edit_education">Edit education</string>
+
+    <string name="user_picture">User picture</string>
+
 </resources>
