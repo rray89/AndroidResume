@@ -49,8 +49,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/iv_user_icon"
-                android:layout_below="@id/ll_user_name_layout"
+                android:layout_toLeftOf="@+id/iv_user_icon"
+                android:layout_below="@+id/ll_user_name_layout"
                 android:text="github.com/abcdefg"/>
 
             <TextView
@@ -58,8 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/iv_user_icon"
-                android:layout_below="@id/tv_github"
+                android:layout_toLeftOf="@+id/iv_user_icon"
+                android:layout_below="@+id/tv_github"
                 android:text="rray@hotmail.ca"/>
 
             <TextView
@@ -67,8 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/iv_user_icon"
-                android:layout_below="@id/tv_email"
+                android:layout_toLeftOf="@+id/iv_user_icon"
+                android:layout_below="@+id/tv_email"
                 android:text="(123) 456-7890"/>
 
             <TextView

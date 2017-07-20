@@ -106,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static <T> String formatDate (T object) {
         if(object instanceof Education)
-            return ((Education) object).getStartDate().toString() + " - " + ((Education) object).getEndDate().toString();
+            return (DateUtils.dataToString(((Education) object).getStartDate()) + " - " + DateUtils.dataToString(((Education) object).getEndDate()));
         if(object instanceof WorkExperience)
-            return ((WorkExperience) object).getStartDate().toString() + " - " + ((WorkExperience) object).getEndDate().toString();
+            return (DateUtils.dataToString(((WorkExperience) object).getStartDate()) + " - " + DateUtils.dataToString(((WorkExperience) object).getEndDate()));
 
         return "Something wrong with date";
     }
