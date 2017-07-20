@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupEducations() {
 
         LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_education_list);
+        //educationLayout.removeAllViews();
         for (Education education: educations) {
             educationLayout.addView(getEducationView(education));
         }
@@ -53,19 +54,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private View getEducationView(Education education) {
-//        View view = getLayoutInflater().inflate(R.layout.education_item, null);
-//        ((TextView) findViewById(R.id.tv_institution_name))
-//                .setText(education.getInstitution_name());
-////        ((TextView) findViewById(R.id.tv_degree)).setText(education.getDegree());
-////        ((TextView) findViewById(R.id.tv_school_start_end_date)).setText(formatDate(education));
-////        ((TextView) findViewById(R.id.tv_education_courses)).setText(bulletFormatString(education.getCourses()));
         View view = getLayoutInflater().inflate(R.layout.education_item, null);
-//        String dateString = DateUtils.dataToString(education.getStartDate()) + " ~ " + DateUtils.dataToString(education.getEndDate());
-//
-//        ((TextView) view.findViewById(R.id.tv_institution_name)).setText(education.getInstitution_name() + " (" + dateString + ")");
-//        ((TextView) view.findViewById(R.id.tv_education_courses)).setText(bulletFormatString(education.getCourses()));
+
+        ((TextView) view.findViewById(R.id.tv_institution_name))
+                .setText(education.getInstitution_name());
+        ((TextView) view.findViewById(R.id.tv_degree)).setText(education.getDegree());
+
+
+        String dateString = DateUtils.dateToString(education.getEndDate());
+
+        ((TextView) view.findViewById(R.id.tv_school_start_end_date))
+                .setText(dateString);
+        ((TextView) view.findViewById(R.id.tv_education_courses))
+                .setText(bulletFormatString(education.getCourses()));
+
         return view;
-        //return view;
+
     }
 
     //method setupWorkExperiences to display Work Experiences session
@@ -74,8 +78,10 @@ public class MainActivity extends AppCompatActivity {
                 .setText(workExperiences.get(0).getCompanyName());
         ((TextView) findViewById(R.id.tv_job_title))
                 .setText(workExperiences.get(0).getJobTitle());
+
+        String dateString = DateUtils.dateToString(workExperiences.get(0).getStartDate());
         ((TextView) findViewById(R.id.tv_job_start_end_date))
-                .setText(formatDate(workExperiences.get(0)));
+                .setText(dateString);
         ((TextView) findViewById(R.id.tv_job_description))
                 .setText(bulletFormatString(workExperiences.get(0).getJobDescription()));
     }
@@ -136,25 +142,16 @@ public class MainActivity extends AppCompatActivity {
         w1.setJobDescription(w1JobDescription);
         workExperiences.add(w1);
 
-
     }
 
     public static String bulletFormatString (List<String> strings) {
+
         StringBuilder sb = new StringBuilder();
         for (String string: strings) {
             sb.append(' ').append('-').append(' ').append(string).append('\n');
         }
         return sb.toString();
+
     }
-
-    public static <T> String formatDate (T object) {
-        if(object instanceof Education)
-            return (DateUtils.dataToString(((Education) object).getStartDate()) + " - " + DateUtils.dataToString(((Education) object).getEndDate()));
-        if(object instanceof WorkExperience)
-            return (DateUtils.dataToString(((WorkExperience) object).getStartDate()) + " - " + DateUtils.dataToString(((WorkExperience) object).getEndDate()));
-
-        return "Something wrong with date";
-    }
-
 
 }

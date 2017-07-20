@@ -112,8 +112,8 @@
                 android:layout_height="@dimen/icon_button_size"
                 android:layout_marginRight="@dimen/spacing_xsmall"
                 android:src="@drawable/ic_add_black_18dp"
-                android:background="?attr/selectableItemBackground"/>
-
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/add_education"/>
 
         </LinearLayout>
 
@@ -121,9 +121,7 @@
             android:id="@+id/ll_education_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        </LinearLayout>
+            android:orientation="vertical"/>
 
         <LinearLayout
             android:layout_width="match_parent"

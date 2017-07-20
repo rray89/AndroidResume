@@ -10,9 +10,9 @@ import java.util.Date;
  */
 
 public class DateUtils {
-    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/yyyy", Locale.CANADA);
+    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/yyyy", Locale.getDefault());
 
-    public static String dataToString(Date date) {
+    public static String dateToString(Date date) {
         return simpleDateFormat.format(date);
     }
 
