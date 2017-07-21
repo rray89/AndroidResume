@@ -4,33 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/ll_project"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/tv_institution_name"
+            android:id="@+id/tv_project_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/subtitle_text_size"
-            tools:text="Dalhousie University"/>
-
+            tools:text="Android developing project"
+            android:textSize="@dimen/subtitle_text_size"/>
 
         <ImageButton
-            android:id="@+id/ib_edit_school_btn"
+            android:id="@+id/ib_edit_job_description_btn"
             android:layout_width="@dimen/icon_button_size"
             android:layout_height="@dimen/icon_button_size"
-
+            android:layout_marginRight="@dimen/spacing_xsmall"
             android:src="@drawable/ic_mode_edit_black_18dp"
-            android:alpha="0.7"
-            android:background="?attr/selectableItemBackground"
-            android:contentDescription="@string/edit_education"/>
+            android:background="?attr/selectableItemBackground"/>
 
     </LinearLayout>
 
@@ -38,26 +35,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
-            android:id="@+id/tv_degree"
+            android:id="@+id/tv_project_role"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textStyle="italic"
-            tools:text="Bachelor of Computer Science"/>
-
+            tools:text="Developer"
+            android:textStyle="italic" />
         <TextView
-            android:id="@+id/tv_school_start_end_date"
+            android:id="@+id/tv_project_start_end_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="2010 - 2014"/>
+            tools:text="2014 - 2016" />
+
     </LinearLayout>
 
-
     <TextView
-        android:id="@+id/tv_education_courses"
+        android:id="@+id/tv_project_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="\t- Database\n\t- Algorithm\n\t- Network" />
+        tools:text="\t- do sth\n\t- do the else\n\t- do other things"/>
 
 </LinearLayout>

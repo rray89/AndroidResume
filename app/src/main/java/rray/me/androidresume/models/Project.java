@@ -1,6 +1,6 @@
 package rray.me.androidresume.models;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,6 +11,8 @@ public class Project {
     private String id;
     private String project_name;
     private Date startDate;
+    private Date endDate;
+    private List<String> project_details;
 
     public String getId() {
         return id;
@@ -52,6 +54,5 @@ public class Project {
         this.project_details = project_details;
     }
 
-    private Date endDate;
-    private List<String> project_details;
+
 }

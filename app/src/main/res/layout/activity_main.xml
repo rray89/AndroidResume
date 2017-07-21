@@ -86,7 +86,7 @@
                 android:layout_width="@dimen/user_icon_size"
                 android:layout_height="@dimen/user_icon_size"
                 android:layout_alignParentRight="true"
-                tools:src="@drawable/xiaofeichai_290x290"/>
+                android:src="@drawable/badass_290x290"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -152,55 +152,44 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_work_experience"
+            android:id="@+id/ll_work_experience_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/tv_company_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:text="Dalhousie Univeristy"
-                android:textSize="@dimen/subtitle_text_size"/>
-
-            <ImageButton
-                android:id="@+id/ib_edit_job_description_btn"
-                android:layout_width="@dimen/icon_button_size"
-                android:layout_height="@dimen/icon_button_size"
-                android:layout_marginRight="@dimen/spacing_xsmall"
-                android:src="@drawable/ic_mode_edit_black_18dp"
-                android:background="?attr/selectableItemBackground"/>
-
-        </LinearLayout>
+            android:orientation="vertical"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_small">
 
             <TextView
-                android:id="@+id/tv_job_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/tv_project"
                 android:layout_weight="1"
-                android:text=" Teaching Assistant"
-                android:textStyle="italic" />
-            <TextView
-                android:id="@+id/tv_job_start_end_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="2014 - 2016" />
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold"
+                android:text="Project"/>
+
+            <ImageButton
+                android:id="@+id/ib_add_project_btn"
+                android:layout_width="@dimen/icon_button_size"
+                android:layout_height="@dimen/icon_button_size"
+                android:layout_marginRight="@dimen/spacing_xsmall"
+                android:src="@drawable/ic_add_black_18dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/user_icon"/>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_job_description"
+        <LinearLayout
+            android:id="@+id/ll_project_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="- Hosted Q&amp;A Session\n- Marked assignments\n- Invigilate exams"/>
+            android:orientation="vertical"/>
 
     </LinearLayout>
 

@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 
 import rray.me.androidresume.models.BasicInfo;
 import rray.me.androidresume.models.Education;
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setupBasicInfoUI();
         setupEducations();
         setupWorkExperiences();
+        setupProjects();
     }
 
     //method setupBasicInfoUI to display BasicInfo session
@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) view.findViewById(R.id.tv_degree)).setText(education.getDegree());
 
 
-        String dateString = DateUtils.dateToString(education.getEndDate());
+        String dateString = DateUtils.dateToString(education.getStartDate())
+                + " - " +DateUtils.dateToString(education.getEndDate());
 
         ((TextView) view.findViewById(R.id.tv_school_start_end_date))
                 .setText(dateString);
@@ -74,18 +75,60 @@ public class MainActivity extends AppCompatActivity {
 
     //method setupWorkExperiences to display Work Experiences session
     private void setupWorkExperiences() {
-        ((TextView) findViewById(R.id.tv_company_name))
-                .setText(workExperiences.get(0).getCompanyName());
-        ((TextView) findViewById(R.id.tv_job_title))
-                .setText(workExperiences.get(0).getJobTitle());
+        LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_work_experience_list);
 
-        String dateString = DateUtils.dateToString(workExperiences.get(0).getStartDate());
-        ((TextView) findViewById(R.id.tv_job_start_end_date))
-                .setText(dateString);
-        ((TextView) findViewById(R.id.tv_job_description))
-                .setText(bulletFormatString(workExperiences.get(0).getJobDescription()));
+        for (WorkExperience workExperience: workExperiences) {
+            educationLayout.addView(getWorkExperienceView(workExperience));
+        }
+
+
     }
 
+    //Helper method
+    private View getWorkExperienceView(WorkExperience workExperience) {
+        View view = getLayoutInflater().inflate(R.layout.work_experience_item, null);
+        ((TextView) view.findViewById(R.id.tv_company_name))
+                .setText(workExperience.getCompanyName());
+        ((TextView) view.findViewById(R.id.tv_job_title))
+                .setText(workExperience.getJobTitle());
+
+        String dateString = DateUtils.dateToString(workExperience.getStartDate())
+                + " - " + DateUtils.dateToString(workExperience.getEndDate());
+        ((TextView) view.findViewById(R.id.tv_job_start_end_date))
+                .setText(dateString);
+        ((TextView) view.findViewById(R.id.tv_job_description))
+                .setText(bulletFormatString(workExperience.getJobDescription()));
+
+        return view;
+    }
+
+    private void setupProjects() {
+        LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_project_list);
+
+        for (Project project: projects) {
+            educationLayout.addView(getProjectView(project));
+        }
+
+
+    }
+
+    //Helper method
+    private View getProjectView(Project project) {
+
+        View view = getLayoutInflater().inflate(R.layout.project_item, null);
+
+        ((TextView) view.findViewById(R.id.tv_project_name))
+                .setText(project.getProject_name());
+
+        String dateString = DateUtils.dateToString(project.getStartDate())
+                + " - " + DateUtils.dateToString(project.getEndDate());
+        ((TextView) view.findViewById(R.id.tv_project_start_end_time)).setText(dateString);
+
+        ((TextView) view.findViewById(R.id.tv_project_description))
+                .setText(bulletFormatString(project.getProject_details()));
+
+        return view;
+    }
 
     //method fake data to create fake data for basic info, education and work experience
     private void fakeData() {
@@ -115,8 +158,8 @@ public class MainActivity extends AppCompatActivity {
 
         Education e2 = new Education();
         e2.setInstitution_name("Harvard");
-        e1.setStartDate(DateUtils.stringToDate("09/2014"));
-        e1.setEndDate(DateUtils.stringToDate("05/2015"));
+        e2.setStartDate(DateUtils.stringToDate("09/2014"));
+        e2.setEndDate(DateUtils.stringToDate("05/2015"));
         e2.setDegree("Master of Computer Science");
         List<String> e2Courses = new ArrayList<>();
         e2Courses.add("Adv Database");
@@ -142,13 +185,24 @@ public class MainActivity extends AppCompatActivity {
         w1.setJobDescription(w1JobDescription);
         workExperiences.add(w1);
 
+        projects = new ArrayList<>();
+        Project p1 = new Project();
+        p1.setProject_name("Android Developing Project");
+        p1.setStartDate(DateUtils.stringToDate("10/2010"));
+        p1.setEndDate(DateUtils.stringToDate("10/2011"));
+        List<String> p1Descrition = new ArrayList<>();
+        p1Descrition.add("do something");
+        p1Descrition.add("something else");
+        p1Descrition.add("other things");
+        p1.setProject_details(p1Descrition);
+        projects.add(p1);
     }
 
     public static String bulletFormatString (List<String> strings) {
 
         StringBuilder sb = new StringBuilder();
         for (String string: strings) {
-            sb.append(' ').append('-').append(' ').append(string).append('\n');
+            sb.append('\t').append('-').append(' ').append(string).append('\n');
         }
         return sb.toString();
 
