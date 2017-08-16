@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
         String dateString = DateUtils.dateToString(project.getStartDate())
                 + " - " + DateUtils.dateToString(project.getEndDate());
-        ((TextView) view.findViewById(R.id.tv_project_start_end_time)).setText(dateString);
+        ((TextView) view.findViewById(R.id.tv_project_start_end_date)).setText(dateString);
 
         ((TextView) view.findViewById(R.id.tv_project_description))
                 .setText(bulletFormatString(project.getProject_details()));
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         //fake data for work experience
         workExperiences = new ArrayList<>();
         WorkExperience w1 = new WorkExperience();
-        w1.setCompanyName("MIT - Faculty of Computer Science");
+        w1.setCompanyName("Massachusetts Institute of Technology - Faculty of Computer Science");
         w1.setJobTitle("Teaching Assistant");
         w1.setStartDate(DateUtils.stringToDate("09/2012"));
         w1.setEndDate(DateUtils.stringToDate("08/2015"));
