@@ -10,6 +10,7 @@
     <string name="edit_education">编辑教育经历</string>
 
     <string name="user_icon">用户图片</string>
+    <string name="action_save">保存</string>
 
 
 </resources>

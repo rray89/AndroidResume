@@ -1,8 +1,10 @@
 package rray.me.androidresume;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,10 +29,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fakeData();
+        setUpUI();
+    }
+
+    //
+    private void setUpUI() {
         setupBasicInfoUI();
         setupEducations();
-        setupWorkExperiences();
+
+        ((ImageButton) findViewById(R.id.ib_add_education_btn)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent indent = new Intent(MainActivity.this, EducationEditActivity.class);
+                startActivity(indent);
+            }
+        });
+
         setupProjects();
+        setupWorkExperiences();
     }
 
     //method setupBasicInfoUI to display BasicInfo session

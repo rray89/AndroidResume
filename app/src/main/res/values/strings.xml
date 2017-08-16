@@ -14,5 +14,7 @@
     <string name="start_date">Start date</string>
     <string name="end_date">End date</string>
     <string name="education_edit_courses_hint">Courses</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_save">Save</string>
 
 </resources>
