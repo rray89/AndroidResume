@@ -17,4 +17,8 @@
     <string name="action_delete">Delete</string>
     <string name="action_save">Save</string>
 
+    <string name="section_project">Project</string>
+
+    <string name="section_work_experience">Work Experience</string>
+
 </resources>

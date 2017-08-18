@@ -73,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
         View view = getLayoutInflater().inflate(R.layout.education_item, null);
 
         ((TextView) view.findViewById(R.id.tv_institution_name))
-                .setText(education.getInstitution_name());
-        ((TextView) view.findViewById(R.id.tv_degree)).setText(education.getDegree());
+                .setText(education.getInstitutionName());
+        ((TextView) view.findViewById(R.id.tv_education_degree)).setText(education.getDegree());
 
 
         String dateString = DateUtils.dateToString(education.getStartDate())
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         //fake data for education
         educations = new ArrayList<>();
         Education e1 = new Education();
-        e1.setInstitution_name("MIT");
+        e1.setInstitutionName("MIT");
         e1.setStartDate(DateUtils.stringToDate("09/2010"));
         e1.setEndDate(DateUtils.stringToDate("05/2014"));
         e1.setDegree("Bachelor of Computer Science");
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         educations.add(e1);
 
         Education e2 = new Education();
-        e2.setInstitution_name("Harvard");
+        e2.setInstitutionName("Harvard");
         e2.setStartDate(DateUtils.stringToDate("09/2014"));
         e2.setEndDate(DateUtils.stringToDate("05/2015"));
         e2.setDegree("Master of Computer Science");

@@ -98,7 +98,7 @@
             android:layout_marginBottom="@dimen/spacing_small">
 
             <TextView
-                android:id="@+id/tv_education"
+                android:id="@+id/tv_section_education"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -132,13 +132,13 @@
             android:layout_marginBottom="@dimen/spacing_small">
 
             <TextView
-                android:id="@+id/tv_work_experience"
+                android:id="@+id/tv_section_work_experience"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/title_text_size"
                 android:textStyle="bold"
-                android:text="Work Experience"/>
+                android:text="@string/section_work_experience"/>
 
             <ImageButton
                 android:id="@+id/ib_add_work_experience_btn"
@@ -166,13 +166,13 @@
             android:layout_marginBottom="@dimen/spacing_small">
 
             <TextView
-                android:id="@+id/tv_project"
+                android:id="@+id/tv_section_project"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/title_text_size"
                 android:textStyle="bold"
-                android:text="Project"/>
+                android:text="@string/section_project"/>
 
             <ImageButton
                 android:id="@+id/ib_add_project_btn"

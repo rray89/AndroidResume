@@ -7,13 +7,13 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/education_edit_school"
+        android:id="@+id/et_education_edit_institution_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/education_edit_school_hint"/>
 
     <EditText
-        android:id="@+id/education_edit_major"
+        android:id="@+id/et_education_edit_degree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/education_edit_degree_hint"/>
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/education_edit_start_date"
+            android:id="@+id/et_education_edit_start_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -31,7 +31,7 @@
             android:hint="@string/start_date"/>
 
         <EditText
-            android:id="@+id/education_edit_end_date"
+            android:id="@+id/et_education_edit_end_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,13 +41,13 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/education_edit_courses"
+        android:id="@+id/et_education_edit_courses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/education_edit_courses_hint"/>
 
     <TextView
-        android:id="@+id/education_edit_delete"
+        android:id="@+id/tv_education_edit_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_small"
