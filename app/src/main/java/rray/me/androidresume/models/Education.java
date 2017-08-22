@@ -13,17 +13,17 @@ import rray.me.androidresume.util.DateUtils;
  */
 
 public class Education implements Parcelable{
-    //private String id;
+    private String id;
     private String institutionName;
     private String degree;
     private Date startDate;
     private Date endDate;
     private List<String> courses;
 
-    public Education() {}
+    public Education() { }
 
     protected Education(Parcel in) {
-        //id = in.readString();
+        id = in.readString();
         institutionName = in.readString();
         degree = in.readString();
         startDate = DateUtils.stringToDate(in.readString());
@@ -52,13 +52,13 @@ public class Education implements Parcelable{
         this.degree = degree;
     }
 
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getInstitutionName() {
         return institutionName;
@@ -99,7 +99,7 @@ public class Education implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        //parcel.writeString(id);
+        parcel.writeString(id);
         parcel.writeString(institutionName);
         parcel.writeString(degree);
         parcel.writeString(DateUtils.dateToString(startDate));

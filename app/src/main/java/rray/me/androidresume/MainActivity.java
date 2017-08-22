@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,6 +18,8 @@ import rray.me.androidresume.util.DateUtils;
 
 public class MainActivity extends AppCompatActivity {
 
+    static final int REQ_CODE_EDUCATION_EDIT = 100;
+
     private BasicInfo basicInfo;
     private List<Education> educations;
     private List<WorkExperience> workExperiences;
@@ -32,21 +33,33 @@ public class MainActivity extends AppCompatActivity {
         setUpUI();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_OK && requestCode == REQ_CODE_EDUCATION_EDIT) {
+            Education newEducation = data.getParcelableExtra(EducationEditActivity.KEY_EDUCATION);
+            educations.add(newEducation);
+            setupEducationsUI();
+        }
+    }
+
     //
     private void setUpUI() {
         setupBasicInfoUI();
-        setupEducations();
+        setupEducationsUI();
 
-        ((ImageButton) findViewById(R.id.ib_add_education_btn)).setOnClickListener(new View.OnClickListener() {
+        //activate edit education button
+        findViewById(R.id.ib_add_education_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent indent = new Intent(MainActivity.this, EducationEditActivity.class);
-                startActivity(indent);
+                startActivityForResult(indent, REQ_CODE_EDUCATION_EDIT);
             }
         });
 
-        setupProjects();
-        setupWorkExperiences();
+        setupProjectsUI();
+        setupWorkExperiencesUI();
     }
 
     //method setupBasicInfoUI to display BasicInfo session
@@ -59,16 +72,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //method setupEducation to display Educations session
-    private void setupEducations() {
+    private void setupEducationsUI() {
 
         LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_education_list);
-        //educationLayout.removeAllViews();
+        educationLayout.removeAllViews();
         for (Education education: educations) {
             educationLayout.addView(getEducationView(education));
         }
 
     }
 
+    //method getEducationView
     private View getEducationView(Education education) {
         View view = getLayoutInflater().inflate(R.layout.education_item, null);
 
@@ -89,15 +103,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //method setupWorkExperiences to display Work Experiences session
-    private void setupWorkExperiences() {
+    //method setupWorkExperiencesUI to display Work Experiences session
+    private void setupWorkExperiencesUI() {
         LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_work_experience_list);
 
         for (WorkExperience workExperience: workExperiences) {
             educationLayout.addView(getWorkExperienceView(workExperience));
         }
-
-
     }
 
     //Helper method
@@ -118,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         return view;
     }
 
-    private void setupProjects() {
+    private void setupProjectsUI() {
         LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_project_list);
 
         for (Project project: projects) {

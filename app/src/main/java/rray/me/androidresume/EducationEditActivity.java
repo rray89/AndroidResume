@@ -25,6 +25,13 @@ import rray.me.androidresume.util.DateUtils;
 
 public class EducationEditActivity extends AppCompatActivity{
 
+    public static final String KEY_EDUCATION = "education";
+    private Education education;
+
+    public EducationEditActivity(Education education) {
+        this.education = education;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +39,15 @@ public class EducationEditActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //back button
     }
 
-    //get called when clicked on back button
+    //get called when clicked on back&save button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish(); //finish current activity
                 return true;
-            case R.id.ic_save:
-                //saveAndExit();
+            case R.id.menu_action_save:
+                saveAndExit();
                 return true;
 
         }
@@ -56,8 +63,7 @@ public class EducationEditActivity extends AppCompatActivity{
 
 
     //method saveAndExit: save text in text field and set corresponding values
-    //Exit after that
-    protected void saveAndExit(@Nullable Education education) {
+    private void saveAndExit() {
         if (education == null) {
             education = new Education();
         }
@@ -86,9 +92,9 @@ public class EducationEditActivity extends AppCompatActivity{
         education.setCourses(courses);
 
         Intent resultIntent = new Intent();
-        resultIntent.putExtra("education", education);
+        resultIntent.putExtra(KEY_EDUCATION, education);
         setResult(RESULT_OK, resultIntent);
-
+        finish();
     }
 
 }
