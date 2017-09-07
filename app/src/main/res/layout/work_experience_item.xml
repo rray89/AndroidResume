@@ -27,7 +27,8 @@
             android:layout_height="@dimen/icon_button_size"
             android:layout_marginRight="@dimen/spacing_xsmall"
             android:src="@drawable/ic_mode_edit_black_18dp"
-            android:background="?attr/selectableItemBackground"/>
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/edit_work_experience"/>
 
     </LinearLayout>
 

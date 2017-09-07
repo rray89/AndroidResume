@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_small"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/iv_user_icon"
+                android:layout_toLeftOf="@+id/ib_edit_user_icon"
                 android:gravity="center_vertical">
 
                 <TextView
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/caption_text_size"
                     android:textStyle="bold"
-                    tools:text="Your Name"/>
+                    tools:text="Your Name" />
 
                 <ImageButton
                     android:id="@+id/ib_edit_basic_info_btn"
@@ -45,11 +45,11 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_github"
+                android:id="@+id/tv_personal_site"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/iv_user_icon"
+                android:layout_toLeftOf="@+id/ib_edit_user_icon"
                 android:layout_below="@+id/ll_user_name_layout"
                 tools:text="github.com/xxxxx"/>
 
@@ -58,8 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/iv_user_icon"
-                android:layout_below="@+id/tv_github"
+                android:layout_toLeftOf="@+id/ib_edit_user_icon"
+                android:layout_below="@+id/tv_personal_site"
                 tools:text="your email"/>
 
             <TextView
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/iv_user_icon"
+                android:layout_toLeftOf="@+id/ib_edit_user_icon"
                 android:layout_below="@+id/tv_email"
                 android:text="(123) 456-7890"/>
 
@@ -76,17 +76,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/iv_user_icon"
+                android:layout_toLeftOf="@+id/ib_edit_user_icon"
                 android:layout_below="@id/tv_phone_number"
                 tools:text="1234 Fake St"/>
 
 
-            <ImageView
-                android:id="@+id/iv_user_icon"
+            <ImageButton
+                android:id="@+id/ib_edit_user_icon"
                 android:layout_width="@dimen/user_icon_size"
                 android:layout_height="@dimen/user_icon_size"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/badass_290x290"/>
+                android:src="@drawable/ic_account_circle_white_48dp"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -121,7 +121,9 @@
             android:id="@+id/ll_education_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="vertical">
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

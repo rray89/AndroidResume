@@ -7,6 +7,8 @@
 
     <string name="add_education">Add education</string>
     <string name="edit_education">Edit education</string>
+    <string name="edit_work_experience">Edit Work Experience</string>
+    <string name="edit_project">Edit Project</string>
 
     <string name="user_icon">User picture</string>
     <string name="education_edit_school_hint">Institution name</string>

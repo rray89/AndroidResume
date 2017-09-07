@@ -1,9 +1,11 @@
 package rray.me.androidresume;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -50,11 +52,13 @@ public class MainActivity extends AppCompatActivity {
         setupEducationsUI();
 
         //activate edit education button
-        findViewById(R.id.ib_add_education_btn).setOnClickListener(new View.OnClickListener() {
+        ImageButton addEducationButton = (ImageButton) findViewById(R.id.ib_add_education_btn);
+        addEducationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent indent = new Intent(MainActivity.this, EducationEditActivity.class);
-                startActivityForResult(indent, REQ_CODE_EDUCATION_EDIT);
+                Intent intent = new Intent(MainActivity.this, EducationEditActivity.class);
+                startActivityForResult(intent, REQ_CODE_EDUCATION_EDIT);
+                //startActivity(indent);
             }
         });
 
@@ -67,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tv_name)).setText(basicInfo.getName());
         ((TextView) findViewById(R.id.tv_address)).setText(basicInfo.getAddress());
         ((TextView) findViewById(R.id.tv_email)).setText(basicInfo.getEmail());
-        ((TextView) findViewById(R.id.tv_github)).setText(basicInfo.getGithub());
+        ((TextView) findViewById(R.id.tv_personal_site)).setText(basicInfo.getGithub());
         ((TextView) findViewById(R.id.tv_phone_number)).setText(basicInfo.getPhoneNumber());
     }
 
@@ -77,29 +81,32 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_education_list);
         educationLayout.removeAllViews();
         for (Education education: educations) {
-            educationLayout.addView(getEducationView(education));
+            View educationView = getLayoutInflater().inflate(R.layout.education_item, null);
+            setupEducationView(educationView, education);
+            educationLayout.addView(educationView);
         }
 
     }
 
-    //method getEducationView
-    private View getEducationView(Education education) {
-        View view = getLayoutInflater().inflate(R.layout.education_item, null);
+    //method setupEducationView
+    private void setupEducationView(View educationView, @Nullable Education education) {
 
-        ((TextView) view.findViewById(R.id.tv_institution_name))
+        ((TextView) educationView.findViewById(R.id.tv_institution_name))
                 .setText(education.getInstitutionName());
-        ((TextView) view.findViewById(R.id.tv_education_degree)).setText(education.getDegree());
-
+        ((TextView) educationView.findViewById(R.id.tv_education_degree))
+                .setText(education.getDegree());
 
         String dateString = DateUtils.dateToString(education.getStartDate())
                 + " - " +DateUtils.dateToString(education.getEndDate());
 
-        ((TextView) view.findViewById(R.id.tv_school_start_end_date))
+        ((TextView) educationView.findViewById(R.id.tv_school_start_end_date))
                 .setText(dateString);
-        ((TextView) view.findViewById(R.id.tv_education_courses))
+        ((TextView) educationView.findViewById(R.id.tv_education_courses))
                 .setText(bulletFormatString(education.getCourses()));
 
-        return view;
+        //view.findViewById(R.id.)
+
+        //return view;
 
     }
 
@@ -112,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Helper method
+    //Helper method getWorkExperienceView
     private View getWorkExperienceView(WorkExperience workExperience) {
         View view = getLayoutInflater().inflate(R.layout.work_experience_item, null);
         ((TextView) view.findViewById(R.id.tv_company_name))
@@ -130,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         return view;
     }
 
+    //method setupProjectsUI
     private void setupProjectsUI() {
         LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_project_list);
 
@@ -183,19 +191,19 @@ public class MainActivity extends AppCompatActivity {
         e1.setCourses(e1Courses);
 
         educations.add(e1);
-
-        Education e2 = new Education();
-        e2.setInstitutionName("Harvard");
-        e2.setStartDate(DateUtils.stringToDate("09/2014"));
-        e2.setEndDate(DateUtils.stringToDate("05/2015"));
-        e2.setDegree("Master of Computer Science");
-        List<String> e2Courses = new ArrayList<>();
-        e2Courses.add("Adv Database");
-        e2Courses.add("Adv Network");
-        e2Courses.add("Adv OS");
-        e2.setCourses(e2Courses);
-
-        educations.add(e2);
+//
+//        Education e2 = new Education();
+//        e2.setInstitutionName("Harvard");
+//        e2.setStartDate(DateUtils.stringToDate("09/2014"));
+//        e2.setEndDate(DateUtils.stringToDate("05/2015"));
+//        e2.setDegree("Master of Computer Science");
+//        List<String> e2Courses = new ArrayList<>();
+//        e2Courses.add("Adv Database");
+//        e2Courses.add("Adv Network");
+//        e2Courses.add("Adv OS");
+//        e2.setCourses(e2Courses);
+//
+//        educations.add(e2);
 
         //fake data for work experience
         workExperiences = new ArrayList<>();

@@ -1,11 +1,15 @@
-package rray.me.androidresume;
 
 /**
- * Created by RRay on 8/16/2017.
+ *
+ *
+ *
  */
+
+package rray.me.androidresume;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -20,50 +24,33 @@ import java.util.List;
 import rray.me.androidresume.models.Education;
 import rray.me.androidresume.util.DateUtils;
 
-//import rray.me.androidresume.models.Education;
-//import rray.me.androidresume.util.DateUtils;
+import rray.me.androidresume.models.Education;
+import rray.me.androidresume.util.DateUtils;
 
-public class EducationEditActivity extends AppCompatActivity{
+public class EducationEditActivity extends EditBaseActivity<Education>{
 
     public static final String KEY_EDUCATION = "education";
-    private Education education;
+    public static final String KEY_EDUCATION_ID = "education_id";
 
-    public EducationEditActivity(Education education) {
-        this.education = education;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_education_edit;
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_education_edit);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //back button
+    protected void setupUIForCreate() {
+
     }
 
-    //get called when clicked on back&save button
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish(); //finish current activity
-                return true;
-            case R.id.menu_action_save:
-                saveAndExit();
-                return true;
+    protected void setupUIForEdit(@NonNull Education data) {
 
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    //called when clicked on save
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_edit_education, menu);
-        return true;
     }
 
 
     //method saveAndExit: save text in text field and set corresponding values
-    private void saveAndExit() {
+    protected void saveAndExit(@Nullable Education education) {
         if (education == null) {
             education = new Education();
         }
@@ -95,6 +82,11 @@ public class EducationEditActivity extends AppCompatActivity{
         resultIntent.putExtra(KEY_EDUCATION, education);
         setResult(RESULT_OK, resultIntent);
         finish();
+    }
+
+    @Override
+    protected Education initialzeData() {
+        return null;
     }
 
 }
