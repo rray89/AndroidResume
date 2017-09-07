@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import rray.me.androidresume.util.DateUtils;
 
@@ -20,13 +21,16 @@ public class Education implements Parcelable{
     private Date endDate;
     private List<String> courses;
 
-    public Education() { }
+    public Education() {
+        UUID.randomUUID().toString();
+    }
 
     protected Education(Parcel in) {
         id = in.readString();
         institutionName = in.readString();
         degree = in.readString();
-        startDate = DateUtils.stringToDate(in.readString());
+        startDate = new Date(in.readString());
+                //DateUtils.stringToDate(in.readString());
         endDate = DateUtils.stringToDate(in.readString());
         courses = in.createStringArrayList();
 

@@ -69,10 +69,8 @@ public class MainActivity extends AppCompatActivity {
     //method setupBasicInfoUI to display BasicInfo session
     private void setupBasicInfoUI() {
         ((TextView) findViewById(R.id.tv_name)).setText(basicInfo.getName());
-        ((TextView) findViewById(R.id.tv_address)).setText(basicInfo.getAddress());
         ((TextView) findViewById(R.id.tv_email)).setText(basicInfo.getEmail());
-        ((TextView) findViewById(R.id.tv_personal_site)).setText(basicInfo.getGithub());
-        ((TextView) findViewById(R.id.tv_phone_number)).setText(basicInfo.getPhoneNumber());
+        ((TextView) findViewById(R.id.tv_personal_site)).setText(basicInfo.getPersonal_site());
     }
 
     //method setupEducation to display Educations session
@@ -172,10 +170,8 @@ public class MainActivity extends AppCompatActivity {
         //fake data for basic info
         basicInfo = new BasicInfo();
         basicInfo.setName("Chao Wang");
-        basicInfo.setAddress("1234 Fake St");
         basicInfo.setEmail("rray@hotmail.ca");
-        basicInfo.setPhoneNumber("(123) 456-7890");
-        basicInfo.setGithub("github.com/fakeAccount");
+        basicInfo.setPersonal_site("github.com/fakeAccount");
 
         //fake data for education
         educations = new ArrayList<>();

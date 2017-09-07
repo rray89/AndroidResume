@@ -1,16 +1,39 @@
 package rray.me.androidresume.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by RRay on 7/19/2017.
  */
 
-public class BasicInfo {
+public class BasicInfo implements Parcelable{
 
     private String name;
     private String email;
-    private String address;
-    private String github;
-    private String phoneNumber;
+    private String personal_site;
+
+
+    public BasicInfo() { }
+
+    protected BasicInfo(Parcel in) {
+        name = in.readString();
+        email = in.readString();
+        personal_site = in.readString();
+
+    }
+
+    public static final Creator<BasicInfo> CREATOR = new Creator<BasicInfo>() {
+        @Override
+        public BasicInfo createFromParcel(Parcel in) {
+            return new BasicInfo(in);
+        }
+
+        @Override
+        public BasicInfo[] newArray(int size) {
+            return new BasicInfo[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -28,27 +51,25 @@ public class BasicInfo {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPersonal_site() {
+        return personal_site;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPersonal_site(String personal_site) {
+        this.personal_site = personal_site;
     }
 
-    public String getGithub() {
-        return github;
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setGithub(String github) {
-        this.github = github;
-    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(email);
+        dest.writeString(personal_site);
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 }
