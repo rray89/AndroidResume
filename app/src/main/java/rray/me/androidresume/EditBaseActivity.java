@@ -32,8 +32,6 @@ public abstract class EditBaseActivity<T> extends AppCompatActivity {
         } else {
             setupUIForCreate();
         }
-
-
     }
 
     @Override

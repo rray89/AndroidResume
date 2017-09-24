@@ -20,7 +20,15 @@ import rray.me.androidresume.util.DateUtils;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final int REQ_CODE_EDUCATION_EDIT = 100;
+    private static final int REQ_CODE_EDIT_BASIC_INFO = 100;
+    private static final int REQ_CODE_EDIT_EDUCATION = 101;
+    private static final int REQ_CODE_EDIT_PROJECT = 102;
+    private static final int REQ_CODE_EDIT_WORK_EXPERIENCE = 103;
+
+    private static final String MODEL_BASIC_INFO = "basic_info";
+    private static final String MODEL_EDUCATIONS = "educations";
+    private static final String MODEL_PROJECTS = "projects";
+    private static final String MODEL_WORK_EXPERIENCE = "work_experiences";
 
     private BasicInfo basicInfo;
     private List<Education> educations;
@@ -39,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RESULT_OK && requestCode == REQ_CODE_EDUCATION_EDIT) {
+        if (requestCode == RESULT_OK && requestCode == REQ_CODE_EDIT_EDUCATION) {
             Education newEducation = data.getParcelableExtra(EducationEditActivity.KEY_EDUCATION);
             educations.add(newEducation);
             setupEducationsUI();
@@ -57,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, EducationEditActivity.class);
-                startActivityForResult(intent, REQ_CODE_EDUCATION_EDIT);
+                startActivityForResult(intent, REQ_CODE_EDIT_EDUCATION);
                 //startActivity(indent);
             }
         });
@@ -89,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     //method setupEducationView
     private void setupEducationView(View educationView, @Nullable Education education) {
 
-        ((TextView) educationView.findViewById(R.id.tv_institution_name))
+        ((TextView) educationView.findViewById(R.id.tv_education_institution_name))
                 .setText(education.getInstitutionName());
         ((TextView) educationView.findViewById(R.id.tv_education_degree))
                 .setText(education.getDegree());
@@ -97,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         String dateString = DateUtils.dateToString(education.getStartDate())
                 + " - " +DateUtils.dateToString(education.getEndDate());
 
-        ((TextView) educationView.findViewById(R.id.tv_school_start_end_date))
+        ((TextView) educationView.findViewById(R.id.tv_education_school_start_end_date))
                 .setText(dateString);
         ((TextView) educationView.findViewById(R.id.tv_education_courses))
                 .setText(bulletFormatString(education.getCourses()));
@@ -142,8 +150,6 @@ public class MainActivity extends AppCompatActivity {
         for (Project project: projects) {
             educationLayout.addView(getProjectView(project));
         }
-
-
     }
 
     //Helper method
@@ -152,14 +158,14 @@ public class MainActivity extends AppCompatActivity {
         View view = getLayoutInflater().inflate(R.layout.project_item, null);
 
         ((TextView) view.findViewById(R.id.tv_project_name))
-                .setText(project.getProject_name());
+                .setText(project.getProjectName());
 
-        String dateString = DateUtils.dateToString(project.getStartDate())
-                + " - " + DateUtils.dateToString(project.getEndDate());
-        ((TextView) view.findViewById(R.id.tv_project_start_end_date)).setText(dateString);
+//        String dateString = DateUtils.dateToString(project.getStartDate())
+//                + " - " + DateUtils.dateToString(project.getEndDate());
+//        ((TextView) view.findViewById(R.id.tv_project_start_end_date)).setText(dateString);
 
         ((TextView) view.findViewById(R.id.tv_project_description))
-                .setText(bulletFormatString(project.getProject_details()));
+                .setText(bulletFormatString(project.getProjectDetails()));
 
         return view;
     }
@@ -219,14 +225,14 @@ public class MainActivity extends AppCompatActivity {
 
         projects = new ArrayList<>();
         Project p1 = new Project();
-        p1.setProject_name("Android Developing Project");
-        p1.setStartDate(DateUtils.stringToDate("10/2010"));
-        p1.setEndDate(DateUtils.stringToDate("10/2011"));
-        List<String> p1Descrition = new ArrayList<>();
-        p1Descrition.add("do something");
-        p1Descrition.add("something else");
-        p1Descrition.add("other things");
-        p1.setProject_details(p1Descrition);
+        p1.setProjectName("Android Developing Project");
+//        p1.setStartDate(DateUtils.stringToDate("10/2010"));
+//        p1.setEndDate(DateUtils.stringToDate("10/2011"));
+        List<String> p1Description = new ArrayList<>();
+        p1Description.add("do something");
+        p1Description.add("something else");
+        p1Description.add("other things");
+        p1.setProjectDetails(p1Description);
         projects.add(p1);
     }
 

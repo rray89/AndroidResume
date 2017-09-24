@@ -3,7 +3,6 @@ package rray.me.androidresume.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,11 +13,11 @@ import java.util.UUID;
 public class Project implements Parcelable {
 
     private String id;
-    private String project_name;
+    private String projectName;
 //    private String project_role;
 //    private Date startDate;
 //    private Date endDate;
-    private List<String> project_details;
+    private List<String> projectDetails;
 
     public Project () {
         id = UUID.randomUUID().toString();
@@ -26,11 +25,11 @@ public class Project implements Parcelable {
 
     protected Project(Parcel in) {
         id = in.readString();
-        project_name = in.readString();
+        projectName = in.readString();
 //        project_role = in.readString();
 //        startDate = new Date(in.readLong());
 //        endDate = new Date(in.readLong());
-        project_details = in.createStringArrayList();
+        projectDetails = in.createStringArrayList();
     }
 
     public static final Creator<Project> CREATOR = new Creator<Project>() {
@@ -53,12 +52,12 @@ public class Project implements Parcelable {
         this.id = id;
     }
 
-    public String getProject_name() {
-        return project_name;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setProject_name(String project_name) {
-        this.project_name = project_name;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
 //    public Date getStartDate() {
@@ -77,12 +76,12 @@ public class Project implements Parcelable {
 //        this.endDate = endDate;
 //    }
 
-    public List<String> getProject_details() {
-        return project_details;
+    public List<String> getProjectDetails() {
+        return projectDetails;
     }
 
-    public void setProject_details(List<String> project_details) {
-        this.project_details = project_details;
+    public void setProjectDetails(List<String> projectDetails) {
+        this.projectDetails = projectDetails;
     }
 
 //    public String getProject_role() {
@@ -101,11 +100,11 @@ public class Project implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
-        dest.writeString(project_name);
+        dest.writeString(projectName);
 //        dest.writeString(project_role);
 //        dest.writeLong(startDate.getTime());
 //        dest.writeLong(endDate.getTime());
-        dest.writeStringList(project_details);
+        dest.writeStringList(projectDetails);
     }
 
 

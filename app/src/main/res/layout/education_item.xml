@@ -14,7 +14,7 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/tv_institution_name"
+            android:id="@+id/tv_education_institution_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -23,7 +23,7 @@
 
 
         <ImageButton
-            android:id="@+id/ib_edit_school_btn"
+            android:id="@+id/ib_edit_education_item_btn"
             android:layout_width="@dimen/icon_button_size"
             android:layout_height="@dimen/icon_button_size"
 
@@ -40,14 +40,14 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tv_education_degree"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="italic"
             tools:text="Bachelor of Computer Science"/>
 
         <TextView
-            android:id="@+id/tv_school_start_end_date"
+            android:id="@+id/tv_education_school_start_end_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="2010 - 2014"/>

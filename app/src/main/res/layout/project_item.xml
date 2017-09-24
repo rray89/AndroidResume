@@ -22,7 +22,7 @@
             android:textSize="@dimen/subtitle_text_size"/>
 
         <ImageButton
-            android:id="@+id/ib_edit_job_description_btn"
+            android:id="@+id/ib_edit_project_item_btn"
             android:layout_width="@dimen/icon_button_size"
             android:layout_height="@dimen/icon_button_size"
             android:layout_marginRight="@dimen/spacing_xsmall"
