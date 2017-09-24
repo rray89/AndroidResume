@@ -9,22 +9,14 @@ package rray.me.androidresume;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-
-import rray.me.androidresume.models.Education;
-import rray.me.androidresume.util.DateUtils;
 
 import rray.me.androidresume.models.Education;
 import rray.me.androidresume.util.DateUtils;

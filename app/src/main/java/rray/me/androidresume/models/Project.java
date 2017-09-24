@@ -7,16 +7,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-/**
+/*
  * Created by RRay on 7/20/2017.
  */
 
-public class Project implements Parcelable{
+public class Project implements Parcelable {
 
     private String id;
     private String project_name;
-    private Date startDate;
-    private Date endDate;
+//    private String project_role;
+//    private Date startDate;
+//    private Date endDate;
     private List<String> project_details;
 
     public Project () {
@@ -26,8 +27,9 @@ public class Project implements Parcelable{
     protected Project(Parcel in) {
         id = in.readString();
         project_name = in.readString();
-        startDate = new Date(in.readLong());
-        endDate = new Date(in.readLong());
+//        project_role = in.readString();
+//        startDate = new Date(in.readLong());
+//        endDate = new Date(in.readLong());
         project_details = in.createStringArrayList();
     }
 
@@ -59,21 +61,21 @@ public class Project implements Parcelable{
         this.project_name = project_name;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+//    public Date getStartDate() {
+//        return startDate;
+//    }
+//
+//    public void setStartDate(Date startDate) {
+//        this.startDate = startDate;
+//    }
+//
+//    public Date getEndDate() {
+//        return endDate;
+//    }
+//
+//    public void setEndDate(Date endDate) {
+//        this.endDate = endDate;
+//    }
 
     public List<String> getProject_details() {
         return project_details;
@@ -83,6 +85,13 @@ public class Project implements Parcelable{
         this.project_details = project_details;
     }
 
+//    public String getProject_role() {
+//        return project_role;
+//    }
+//
+//    public void setProject_role(String project_role) {
+//        this.project_role = project_role;
+//    }
 
     @Override
     public int describeContents() {
@@ -93,8 +102,11 @@ public class Project implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
         dest.writeString(project_name);
-        dest.writeLong(startDate.getTime());
-        dest.writeLong(endDate.getTime());
+//        dest.writeString(project_role);
+//        dest.writeLong(startDate.getTime());
+//        dest.writeLong(endDate.getTime());
         dest.writeStringList(project_details);
     }
+
+
 }
