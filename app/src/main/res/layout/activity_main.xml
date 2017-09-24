@@ -140,7 +140,7 @@
                 android:layout_marginRight="@dimen/spacing_xsmall"
                 android:src="@drawable/ic_add_black_18dp"
                 android:background="?attr/selectableItemBackground"
-                android:contentDescription="@string/user_icon"/>
+                android:contentDescription="@string/user_picture"/>
 
         </LinearLayout>
 
@@ -174,7 +174,7 @@
                 android:layout_marginRight="@dimen/spacing_xsmall"
                 android:src="@drawable/ic_add_black_18dp"
                 android:background="?attr/selectableItemBackground"
-                android:contentDescription="@string/user_icon"/>
+                android:contentDescription="@string/user_picture"/>
 
         </LinearLayout>
 

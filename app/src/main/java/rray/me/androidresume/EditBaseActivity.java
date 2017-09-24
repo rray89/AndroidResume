@@ -26,7 +26,7 @@ public abstract class EditBaseActivity<T> extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        data = initialzeData();
+        data = initializeData();
         if(data != null) {
             setupUIForEdit(data);
         } else {
@@ -47,7 +47,7 @@ public abstract class EditBaseActivity<T> extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish(); //finish current activity
+                finish();
                 return true;
             case R.id.menu_save:
                 saveAndExit(data);
@@ -64,5 +64,5 @@ public abstract class EditBaseActivity<T> extends AppCompatActivity {
 
     protected abstract void saveAndExit(@Nullable T data);
 
-    protected abstract T initialzeData();
+    protected abstract T initializeData();
 }

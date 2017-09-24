@@ -1,5 +1,6 @@
 package rray.me.androidresume.models;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -12,6 +13,7 @@ public class BasicInfo implements Parcelable{
     private String name;
     private String email;
     private String personal_site;
+    private Uri imageUri;
 
 
     public BasicInfo() { }
@@ -20,6 +22,7 @@ public class BasicInfo implements Parcelable{
         name = in.readString();
         email = in.readString();
         personal_site = in.readString();
+        imageUri = in.readParcelable(Uri.class.getClassLoader());
 
     }
 
@@ -55,6 +58,14 @@ public class BasicInfo implements Parcelable{
         return personal_site;
     }
 
+    public void setImageUri(Uri imageUri) {
+        this.imageUri = imageUri;
+    }
+
+    public Uri getImageUri() {
+        return imageUri;
+    }
+
     public void setPersonal_site(String personal_site) {
         this.personal_site = personal_site;
     }
@@ -70,6 +81,7 @@ public class BasicInfo implements Parcelable{
         dest.writeString(name);
         dest.writeString(email);
         dest.writeString(personal_site);
+        dest.writeParcelable(imageUri, flags);
 
     }
 }

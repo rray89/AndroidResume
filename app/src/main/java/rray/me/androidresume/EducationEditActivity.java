@@ -1,5 +1,5 @@
 
-/**
+/*
  *
  *
  *
@@ -108,7 +108,7 @@ public class EducationEditActivity extends EditBaseActivity<Education>{
     }
 
     @Override
-    protected Education initialzeData() {
+    protected Education initializeData() {
         return getIntent().getParcelableExtra(KEY_EDUCATION);
     }
 
