@@ -70,8 +70,8 @@ public class EducationEditActivity extends EditBaseActivity<Education>{
             education = new Education();
         }
 
-        String institutionName;
-        String degree;
+        String institutionName = "";
+        String degree = "";
         Date startDate;
         Date endDate;
         List<String> courses;
@@ -83,7 +83,7 @@ public class EducationEditActivity extends EditBaseActivity<Education>{
                 ((EditText) findViewById(R.id.et_education_edit_start_date)).getText().toString());
         endDate = DateUtils.stringToDate(
                 ((EditText) findViewById(R.id.et_education_edit_end_date)).getText().toString());
-        courses = Arrays.asList( TextUtils.split(
+        courses = Arrays.asList(TextUtils.split(
                 ((EditText) findViewById(R.id.et_education_edit_courses)).getText().toString(), "\n"
         ));
 

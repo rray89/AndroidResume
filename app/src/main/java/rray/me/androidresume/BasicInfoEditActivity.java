@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import rray.me.androidresume.models.BasicInfo;
 import rray.me.androidresume.util.ImageUtils;
 import rray.me.androidresume.util.PermissionUtils;
-
+@SuppressWarnings("ConstantConditions")
 public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
 
     public static final String KEY_BASIC_INFO = "basic_info";
@@ -25,7 +25,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQ_CODE_PICK_IMAGE && requestCode == RESULT_OK) {
+        if(requestCode == REQ_CODE_PICK_IMAGE && requestCode == Activity.RESULT_OK) {
             Uri imageUri = data.getData();
             if(imageUri != null) {
                 showImage(imageUri);
@@ -67,7 +67,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
             showImage(data.getImageUri());
         }
 
-        findViewById(R.id.fl_basic_info_edit_image_layout)
+        findViewById(R.id.iv_pick_user_picture)
                 .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +111,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
 
     @Override
     protected BasicInfo initializeData() {
-        return null;
+        return getIntent().getParcelableExtra(KEY_BASIC_INFO);
     }
 
     private void showImage(@NonNull Uri imageUri) {
