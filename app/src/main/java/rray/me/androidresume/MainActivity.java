@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupBasicInfoUI() {
         ((TextView) findViewById(R.id.tv_name)).setText(basicInfo.getName());
         ((TextView) findViewById(R.id.tv_email)).setText(basicInfo.getEmail());
-        ((TextView) findViewById(R.id.tv_personal_site)).setText(basicInfo.getPersonal_site());
+        ((TextView) findViewById(R.id.tv_personal_site)).setText(basicInfo.getPersonalSite());
     }
 
     //method setupEducation to display Educations session
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         basicInfo = new BasicInfo();
         basicInfo.setName("Chao Wang");
         basicInfo.setEmail("rray@hotmail.ca");
-        basicInfo.setPersonal_site("github.com/fakeAccount");
+        basicInfo.setPersonalSite("github.com/fakeAccount");
 
         //fake data for education
         educations = new ArrayList<>();

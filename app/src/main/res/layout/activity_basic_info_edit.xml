@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/basic_info_edit_image_layout"
+        android:id="@+id/fl_basic_info_edit_image_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/basic_info_edit_user_picture_background_height"
         android:background="?attr/selectableItemBackground">
@@ -17,7 +17,7 @@
             android:background="@color/user_picture_selector_background"/>
 
         <ImageView
-            android:id="@+id/basic_info_edit_image"
+            android:id="@+id/iv_basic_info_edit_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/basic_info_edit_user_picture_background_height"
             android:src="@drawable/ic_account_circle_white_48dp"
@@ -36,7 +36,7 @@
     </FrameLayout>
 
     <EditText
-        android:id="@+id/basic_info_edit_name"
+        android:id="@+id/et_basic_info_edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_medium"
@@ -45,12 +45,20 @@
         android:hint="@string/basic_info_edit_name_hint"/>
 
     <EditText
-        android:id="@+id/basic_info_edit_email"
+        android:id="@+id/et_basic_info_edit_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/spacing_medium"
         android:layout_marginRight="@dimen/spacing_medium"
         android:inputType="textEmailAddress"
         android:hint="@string/basic_info_edit_email_hint"/>
+
+    <EditText
+        android:id="@+id/et_basic_info_edit_personal_site"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_medium"
+        android:layout_marginRight="@dimen/spacing_medium"
+        android:hint="@string/basic_info_edit_personal_site_hint"/>
 
 </LinearLayout>

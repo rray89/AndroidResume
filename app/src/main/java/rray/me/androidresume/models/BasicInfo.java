@@ -12,7 +12,7 @@ public class BasicInfo implements Parcelable{
 
     private String name;
     private String email;
-    private String personal_site;
+    private String personalSite;
     private Uri imageUri;
 
 
@@ -21,7 +21,7 @@ public class BasicInfo implements Parcelable{
     protected BasicInfo(Parcel in) {
         name = in.readString();
         email = in.readString();
-        personal_site = in.readString();
+        personalSite = in.readString();
         imageUri = in.readParcelable(Uri.class.getClassLoader());
 
     }
@@ -54,8 +54,8 @@ public class BasicInfo implements Parcelable{
         this.email = email;
     }
 
-    public String getPersonal_site() {
-        return personal_site;
+    public String getPersonalSite() {
+        return personalSite;
     }
 
     public void setImageUri(Uri imageUri) {
@@ -66,8 +66,8 @@ public class BasicInfo implements Parcelable{
         return imageUri;
     }
 
-    public void setPersonal_site(String personal_site) {
-        this.personal_site = personal_site;
+    public void setPersonalSite(String personalSite) {
+        this.personalSite = personalSite;
     }
 
 
@@ -80,7 +80,7 @@ public class BasicInfo implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(email);
-        dest.writeString(personal_site);
+        dest.writeString(personalSite);
         dest.writeParcelable(imageUri, flags);
 
     }

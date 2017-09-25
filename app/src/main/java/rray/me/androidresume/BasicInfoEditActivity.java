@@ -1,16 +1,20 @@
 package rray.me.androidresume;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import rray.me.androidresume.models.BasicInfo;
 import rray.me.androidresume.util.ImageUtils;
+import rray.me.androidresume.util.PermissionUtils;
 
 public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
 
@@ -35,7 +39,11 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-//        if(requestCode == )
+        if(requestCode == PermissionUtils.REQ_CODE_WRITE_EXTERNAL_STORAGE
+                && grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            pickImage();
+        }
 
     }
 
@@ -51,12 +59,54 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
 
     @Override
     protected void setupUIForEdit(@NonNull BasicInfo data) {
+        ((EditText) findViewById(R.id.et_basic_info_edit_name)).setText(data.getName());
+        ((EditText) findViewById(R.id.et_basic_info_edit_email)).setText(data.getEmail());
+        ((EditText) findViewById(R.id.et_basic_info_edit_personal_site))
+                .setText(data.getPersonalSite());
+        if (data.getImageUri() != null) {
+            showImage(data.getImageUri());
+        }
+
+        findViewById(R.id.fl_basic_info_edit_image_layout)
+                .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!PermissionUtils.checkPermission(BasicInfoEditActivity.this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    PermissionUtils.requestReadExternalStoragePermission(BasicInfoEditActivity.this);
+                } else {
+                    pickImage();
+                }
+            }
+        });
 
     }
 
     @Override
     protected void saveAndExit(@Nullable BasicInfo data) {
+        if (data == null) {
+            data = new BasicInfo();
+        }
+        String name;
+        String email;
+        String personalSite;
+        Uri imageUri;
 
+        name = ((EditText) findViewById(R.id.et_basic_info_edit_name)).getText().toString();
+        email = ((EditText) findViewById(R.id.et_basic_info_edit_email)).getText().toString();
+        personalSite = ((EditText) findViewById(R.id.et_basic_info_edit_personal_site))
+                .getText().toString();
+        imageUri = (Uri) findViewById(R.id.basic_info_edit_image).getTag();
+
+        data.setName(name);
+        data.setName(email);
+        data.setPersonalSite(personalSite);
+        data.setImageUri(imageUri);
+
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra(KEY_BASIC_INFO, data);
+        setResult(Activity.RESULT_OK, resultIntent);
+        finish();
     }
 
     @Override
