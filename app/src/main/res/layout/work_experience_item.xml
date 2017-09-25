@@ -54,7 +54,7 @@
 
 
     <TextView
-        android:id="@+id/tv_education_courses"
+        android:id="@+id/tv_work_experience_job_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="\t- Database\n\t- Algorithm\n\t- Network" />

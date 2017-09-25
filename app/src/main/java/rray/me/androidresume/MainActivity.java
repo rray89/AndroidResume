@@ -128,16 +128,16 @@ public class MainActivity extends AppCompatActivity {
     //Helper method getWorkExperienceView
     private View getWorkExperienceView(WorkExperience workExperience) {
         View view = getLayoutInflater().inflate(R.layout.work_experience_item, null);
-        ((TextView) view.findViewById(R.id.tv_company_name))
+        ((TextView) view.findViewById(R.id.tv_work_experience_company_name))
                 .setText(workExperience.getCompanyName());
-        ((TextView) view.findViewById(R.id.tv_job_title))
+        ((TextView) view.findViewById(R.id.tv_work_experience_job_title))
                 .setText(workExperience.getJobTitle());
 
         String dateString = DateUtils.dateToString(workExperience.getStartDate())
                 + " - " + DateUtils.dateToString(workExperience.getEndDate());
-        ((TextView) view.findViewById(R.id.tv_job_start_end_date))
+        ((TextView) view.findViewById(R.id.tv_work_experience_job_start_end_date))
                 .setText(dateString);
-        ((TextView) view.findViewById(R.id.tv_job_description))
+        ((TextView) view.findViewById(R.id.tv_work_experience_job_description))
                 .setText(bulletFormatString(workExperience.getJobDescription()));
 
         return view;

@@ -6,7 +6,7 @@
     <dimen name="spacing_large">24dp</dimen>
 
     <dimen name="user_picture_size">60dp</dimen>
-    <dimen name="basic_info_edit_user_picture_background_height">120dp</dimen>
+    <dimen name="basic_info_edit_user_picture_background_height">180dp</dimen>
     <dimen name="basic_info_edit_user_picture_background_width">180dp</dimen>
 
 
