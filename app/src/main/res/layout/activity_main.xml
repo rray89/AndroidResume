@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_small"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/ib_edit_user_picture"
+                android:layout_toLeftOf="@+id/iv_user_picture"
                 android:gravity="center_vertical">
 
                 <TextView
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/ib_edit_user_picture"
+                android:layout_toLeftOf="@+id/iv_user_picture"
                 android:layout_below="@+id/ll_user_name_layout"
                 tools:text="personal.site"/>
 
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/ib_edit_user_picture"
+                android:layout_toLeftOf="@+id/iv_user_picture"
                 android:layout_below="@+id/tv_personal_site"
                 tools:text="your email"/>
 
@@ -72,12 +72,13 @@
                 <!--android:text="(123) 456-7890"/>-->
 
 
-            <ImageButton
-                android:id="@+id/ib_edit_user_picture"
+            <ImageView
+                android:id="@+id/iv_user_picture"
                 android:layout_width="@dimen/user_picture_size"
                 android:layout_height="@dimen/user_picture_size"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_account_circle_white_48dp"/>
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_account_circle_black_48dp"/>
         </RelativeLayout>
 
         <LinearLayout
