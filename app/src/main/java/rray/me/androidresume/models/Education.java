@@ -29,9 +29,8 @@ public class Education implements Parcelable{
         id = in.readString();
         institutionName = in.readString();
         degree = in.readString();
-        startDate = new Date(in.readString());
-                //DateUtils.stringToDate(in.readString());
-        endDate = DateUtils.stringToDate(in.readString());
+        startDate = new Date(in.readLong());
+        endDate = new Date(in.readLong());
         courses = in.createStringArrayList();
 
     }

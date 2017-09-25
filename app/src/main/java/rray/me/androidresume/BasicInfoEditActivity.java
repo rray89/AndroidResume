@@ -96,10 +96,10 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
         email = ((EditText) findViewById(R.id.et_basic_info_edit_email)).getText().toString();
         personalSite = ((EditText) findViewById(R.id.et_basic_info_edit_personal_site))
                 .getText().toString();
-        imageUri = (Uri) findViewById(R.id.basic_info_edit_image).getTag();
+        imageUri = (Uri) findViewById(R.id.iv_basic_info_edit_image).getTag();
 
         data.setName(name);
-        data.setName(email);
+        data.setEmail(email);
         data.setPersonalSite(personalSite);
         data.setImageUri(imageUri);
 
@@ -115,7 +115,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
     }
 
     private void showImage(@NonNull Uri imageUri) {
-        ImageView imageView = (ImageView) findViewById(R.id.basic_info_edit_image);
+        ImageView imageView = (ImageView) findViewById(R.id.iv_basic_info_edit_image);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         imageView.setTag(imageUri);

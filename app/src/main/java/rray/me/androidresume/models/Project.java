@@ -26,9 +26,7 @@ public class Project implements Parcelable {
     protected Project(Parcel in) {
         id = in.readString();
         projectName = in.readString();
-//        project_role = in.readString();
-//        startDate = new Date(in.readLong());
-//        endDate = new Date(in.readLong());
+
         projectDetails = in.createStringArrayList();
     }
 
