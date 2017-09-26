@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.IOException;
@@ -24,6 +25,8 @@ public class ImageUtils {
             imageView.setImageBitmap(bitmap);
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e("MainActivity", "IOException");
+            return;
         }
 
     }
