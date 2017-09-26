@@ -25,7 +25,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQ_CODE_PICK_IMAGE && requestCode == Activity.RESULT_OK) {
+        if(requestCode == REQ_CODE_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
             Uri imageUri = data.getData();
             if(imageUri != null) {
                 showImage(imageUri);
@@ -53,9 +53,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
     }
 
     @Override
-    protected void setupUIForCreate() {
-
-    }
+    protected void setupUIForCreate() {}
 
     @Override
     protected void setupUIForEdit(@NonNull BasicInfo data) {
