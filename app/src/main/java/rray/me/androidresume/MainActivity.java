@@ -70,24 +70,24 @@ public class MainActivity extends AppCompatActivity {
                         updateEducation(education);
                     }
                     break;
-                case REQ_CODE_EDIT_WORK_EXPERIENCE:
-                    String workExperienceId = data.getStringExtra(WorkExperienceEditActivity.KEY_WORK_EXPERIENCE_ID);
-                    if (workExperienceId != null) {
-                        deleteWorkExperience(workExperienceId);
-                    } else {
-                        WorkExperience workExperience = data.getParcelableExtra(WorkExperienceEditActivity.KEY_WORK_EXPERIENCE);
-                        updateWorkExperience(workExperience);
-                    }
-                    break;
-                case REQ_CODE_EDIT_PROJECT:
-                    String projectId = data.getStringExtra(ProjectEditActivity.KEY_PROJECT_ID);
-                    if (projectId != null) {
-                        deleteProject(projectId);
-                    } else {
-                        Project project = data.getParcelableExtra(ProjectEditActivity.KEY_PROJECT);
-                        updateProject(project);
-                    }
-                    break;
+//                case REQ_CODE_EDIT_WORK_EXPERIENCE:
+//                    String workExperienceId = data.getStringExtra(WorkExperienceEditActivity.KEY_WORK_EXPERIENCE_ID);
+//                    if (workExperienceId != null) {
+//                        deleteWorkExperience(workExperienceId);
+//                    } else {
+//                        WorkExperience workExperience = data.getParcelableExtra(WorkExperienceEditActivity.KEY_WORK_EXPERIENCE);
+//                        updateWorkExperience(workExperience);
+//                    }
+//                    break;
+//                case REQ_CODE_EDIT_PROJECT:
+//                    String projectId = data.getStringExtra(ProjectEditActivity.KEY_PROJECT_ID);
+//                    if (projectId != null) {
+//                        deleteProject(projectId);
+//                    } else {
+//                        Project project = data.getParcelableExtra(ProjectEditActivity.KEY_PROJECT);
+//                        updateProject(project);
+//                    }
+//                    break;
             }
         }
     }
@@ -128,9 +128,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setupBasicInfoUI();
-        //setupEducationsUI();
-        setupProjectsUI();
-        setupWorkExperiencesUI();
+        setupEducationsUI();
+//        setupProjectsUI();
+//        setupWorkExperiencesUI();
     }
 
     //method setupBasicInfoUI to display BasicInfo session
@@ -180,17 +180,17 @@ public class MainActivity extends AppCompatActivity {
     private void setupEducationView(View educationView, final Education education) {
 
         ((TextView) educationView.findViewById(R.id.tv_education_institution_name))
-                .setText(education.getInstitutionName());
+                .setText(education.institutionName);
         ((TextView) educationView.findViewById(R.id.tv_education_degree))
-                .setText(education.getDegree());
+                .setText(education.degree);
 
-        String dateString = DateUtils.dateToString(education.getStartDate())
-                + " - " +DateUtils.dateToString(education.getEndDate());
+        String dateString = DateUtils.dateToString(education.startDate)
+                + " - " +DateUtils.dateToString(education.endDate);
 
         ((TextView) educationView.findViewById(R.id.tv_education_school_start_end_date))
                 .setText(dateString);
         ((TextView) educationView.findViewById(R.id.tv_education_courses))
-                .setText(bulletFormatString(education.getCourses()));
+                .setText(bulletFormatString(education.courses));
 
         ImageButton editEducation = (ImageButton) educationView.findViewById(R.id.ib_edit_education_item_btn);
         editEducation.setOnClickListener(new View.OnClickListener() {
@@ -204,15 +204,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //method setupWorkExperiencesUI to display Work Experiences session
-    private void setupWorkExperiencesUI() {
-        LinearLayout workExperienceLayout = (LinearLayout) findViewById(R.id.ll_work_experience_list);
-        workExperienceLayout.removeAllViews();
-        for (WorkExperience w: workExperienceList) {
-            View workExperienceView = getLayoutInflater().inflate(R.layout.work_experience_item, null);
-            setupWorkExperienceView(workExperienceView, w);
-            workExperienceLayout.addView(workExperienceView);
-        }
-    }
+//    private void setupWorkExperiencesUI() {
+//        LinearLayout workExperienceLayout = (LinearLayout) findViewById(R.id.ll_work_experience_list);
+//        workExperienceLayout.removeAllViews();
+//        for (WorkExperience w: workExperienceList) {
+//            View workExperienceView = getLayoutInflater().inflate(R.layout.work_experience_item, null);
+//            setupWorkExperienceView(workExperienceView, w);
+//            workExperienceLayout.addView(workExperienceView);
+//        }
+//    }
 
     //
     private void setupWorkExperienceView(View workExperienceView, final WorkExperience workExperience) {
@@ -243,15 +243,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     //method setupProjectsUI
-    private void setupProjectsUI() {
-        LinearLayout projectLayout = (LinearLayout) findViewById(R.id.ll_project_list);
-        projectLayout.removeAllViews();
-        for (Project project: projectList) {
-            View projectView = getLayoutInflater().inflate(R.layout.project_item, null);
-            setupProjectView(projectView, project);
-            projectLayout.addView(projectView);
-        }
-    }
+//    private void setupProjectsUI() {
+//        LinearLayout projectLayout = (LinearLayout) findViewById(R.id.ll_project_list);
+//        projectLayout.removeAllViews();
+//        for (Project project: projectList) {
+//            View projectView = getLayoutInflater().inflate(R.layout.project_item, null);
+//            setupProjectView(projectView, project);
+//            projectLayout.addView(projectView);
+//        }
+//    }
 
     private void setupProjectView(@NonNull View projectView, final Project project) {
 
@@ -385,7 +385,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         }
-
         if (!found) {
             educationList.add(education);
         }
@@ -394,43 +393,43 @@ public class MainActivity extends AppCompatActivity {
         setupEducationsUI();
     }
 
-    private void updateWorkExperience(WorkExperience workExperience) {
-        boolean found = false;
-        for (int i = 0; i < workExperienceList.size(); i++) {
-            WorkExperience w = workExperienceList.get(i);
-            if (TextUtils.equals(w.getId(), workExperience.getId())) {
-                found = true;
-                workExperienceList.set(i, workExperience);
-                break;
-            }
-        }
+//    private void updateWorkExperience(WorkExperience workExperience) {
+//        boolean found = false;
+//        for (int i = 0; i < workExperienceList.size(); i++) {
+//            WorkExperience w = workExperienceList.get(i);
+//            if (TextUtils.equals(w.getId(), workExperience.getId())) {
+//                found = true;
+//                workExperienceList.set(i, workExperience);
+//                break;
+//            }
+//        }
+//
+//        if (!found) {
+//            workExperienceList.add(workExperience);
+//        }
+//
+//        ModelUtils.save(this, MODEL_WORK_EXPERIENCES, workExperienceList);
+//        setupWorkExperiencesUI();
+//    }
 
-        if (!found) {
-            workExperienceList.add(workExperience);
-        }
-
-        ModelUtils.save(this, MODEL_WORK_EXPERIENCES, workExperienceList);
-        setupWorkExperiencesUI();
-    }
-
-    private void updateProject(Project project) {
-        boolean found = false;
-        for (int i = 0; i < projectList.size(); i++) {
-            Project p = projectList.get(i);
-            if (TextUtils.equals(p.getId(), project.getId())) {
-                found = true;
-                projectList.set(i, project);
-                break;
-            }
-        }
-
-        if (!found) {
-            projectList.add(project);
-        }
-
-        ModelUtils.save(this, MODEL_PROJECTS, projectList);
-        setupProjectsUI();
-    }
+//    private void updateProject(Project project) {
+//        boolean found = false;
+//        for (int i = 0; i < projectList.size(); i++) {
+//            Project p = projectList.get(i);
+//            if (TextUtils.equals(p.getId(), project.getId())) {
+//                found = true;
+//                projectList.set(i, project);
+//                break;
+//            }
+//        }
+//
+//        if (!found) {
+//            projectList.add(project);
+//        }
+//
+//        ModelUtils.save(this, MODEL_PROJECTS, projectList);
+//        setupProjectsUI();
+//    }
 
 
     private void deleteEducation(@NonNull String educationID) {
@@ -446,29 +445,29 @@ public class MainActivity extends AppCompatActivity {
         setupEducationsUI();
     }
 
-    private void deleteWorkExperience(@NonNull String workExperienceID) {
-        for (int i = 0; i < workExperienceList.size(); i++) {
-            WorkExperience w = workExperienceList.get(i);
-            if (TextUtils.equals(w.getId(), workExperienceID)) {
-                workExperienceList.remove(i);
-                break;
-            }
-        }
+//    private void deleteWorkExperience(@NonNull String workExperienceID) {
+//        for (int i = 0; i < workExperienceList.size(); i++) {
+//            WorkExperience w = workExperienceList.get(i);
+//            if (TextUtils.equals(w.getId(), workExperienceID)) {
+//                workExperienceList.remove(i);
+//                break;
+//            }
+//        }
+//
+//        ModelUtils.save(this, MODEL_WORK_EXPERIENCES, workExperienceList);
+//        setupWorkExperiencesUI();
+//    }
 
-        ModelUtils.save(this, MODEL_WORK_EXPERIENCES, workExperienceList);
-        setupWorkExperiencesUI();
-    }
-
-    private void deleteProject(@NonNull String projectID) {
-        for (int i = 0; i < projectList.size(); i++) {
-            Project p = projectList.get(i);
-            if (TextUtils.equals(p.getId(), projectID)) {
-                projectList.remove(i);
-                break;
-            }
-        }
-
-        ModelUtils.save(this, MODEL_PROJECTS, projectList);
-        setupProjectsUI();
-    }
+//    private void deleteProject(@NonNull String projectID) {
+//        for (int i = 0; i < projectList.size(); i++) {
+//            Project p = projectList.get(i);
+//            if (TextUtils.equals(p.getId(), projectID)) {
+//                projectList.remove(i);
+//                break;
+//            }
+//        }
+//
+//        ModelUtils.save(this, MODEL_PROJECTS, projectList);
+//        setupProjectsUI();
+//    }
 }

@@ -14,12 +14,12 @@ import rray.me.androidresume.util.DateUtils;
  */
 
 public class Education implements Parcelable{
-    private String id;
-    private String institutionName;
-    private String degree;
-    private Date startDate;
-    private Date endDate;
-    private List<String> courses;
+    public String id;
+    public String institutionName;
+    public String degree;
+    public Date startDate;
+    public Date endDate;
+    public List<String> courses;
 
     public Education() {
         UUID.randomUUID().toString();

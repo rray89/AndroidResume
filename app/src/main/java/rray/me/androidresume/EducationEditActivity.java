@@ -70,20 +70,20 @@ public class EducationEditActivity extends EditBaseActivity<Education>{
             education = new Education();
         }
 
-        String institutionName = "";
-        String degree = "";
-        Date startDate;
-        Date endDate;
-        List<String> courses;
+        //String institutionName ;
+        //String degree ;
+        //Date startDate;
+        //Date endDate;
+        //List<String> courses;
 
-        institutionName = ((EditText) findViewById(R.id.et_education_edit_institution_name))
+        String institutionName = ((EditText) findViewById(R.id.et_education_edit_institution_name))
                 .getText().toString();
-        degree = ((EditText) findViewById(R.id.et_education_edit_degree)).getText().toString();
-        startDate = DateUtils.stringToDate(
+        String degree = ((EditText) findViewById(R.id.et_education_edit_degree)).getText().toString();
+        Date startDate = DateUtils.stringToDate(
                 ((EditText) findViewById(R.id.et_education_edit_start_date)).getText().toString());
-        endDate = DateUtils.stringToDate(
+        Date endDate = DateUtils.stringToDate(
                 ((EditText) findViewById(R.id.et_education_edit_end_date)).getText().toString());
-        courses = Arrays.asList(TextUtils.split(
+        List<String> courses = Arrays.asList(TextUtils.split(
                 ((EditText) findViewById(R.id.et_education_edit_courses)).getText().toString(), "\n"
         ));
 

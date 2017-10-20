@@ -26,7 +26,6 @@
             android:id="@+id/ib_edit_education_item_btn"
             android:layout_width="@dimen/icon_button_size"
             android:layout_height="@dimen/icon_button_size"
-
             android:src="@drawable/ic_mode_edit_black_18dp"
             android:alpha="0.7"
             android:background="?attr/selectableItemBackground"
