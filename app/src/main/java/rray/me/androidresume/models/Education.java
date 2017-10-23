@@ -22,7 +22,7 @@ public class Education implements Parcelable{
     public List<String> courses;
 
     public Education() {
-        UUID.randomUUID().toString();
+        id = UUID.randomUUID().toString();
     }
 
     protected Education(Parcel in) {
@@ -105,8 +105,8 @@ public class Education implements Parcelable{
         parcel.writeString(id);
         parcel.writeString(institutionName);
         parcel.writeString(degree);
-        parcel.writeString(DateUtils.dateToString(startDate));
-        parcel.writeString(DateUtils.dateToString(endDate));
+        parcel.writeLong(startDate.getTime());
+        parcel.writeLong(endDate.getTime());
         parcel.writeStringList(courses);
 
     }

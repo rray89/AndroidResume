@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                case REQ_CODE_EDIT_BASIC_INFO:
-                    BasicInfo basicInfo = data.getParcelableExtra(BasicInfoEditActivity.KEY_BASIC_INFO);
-                    updateBasicInfo(basicInfo);
-                    break;
+//                case REQ_CODE_EDIT_BASIC_INFO:
+//                    BasicInfo basicInfo = data.getParcelableExtra(BasicInfoEditActivity.KEY_BASIC_INFO);
+//                    updateBasicInfo(basicInfo);
+//                    break;
                 case REQ_CODE_EDIT_EDUCATION:
                     String educationID = data.getStringExtra(EducationEditActivity.KEY_EDUCATION_ID);
                     if (educationID != null) {
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setupBasicInfoUI();
+        //setupBasicInfoUI();
         setupEducationsUI();
 //        setupProjectsUI();
 //        setupWorkExperiencesUI();
