@@ -94,7 +94,7 @@ public class EducationEditActivity extends EditBaseActivity<Education>{
         education.setCourses(courses);
 
         Intent resultIntent = new Intent();
-        resultIntent.putExtra(KEY_EDUCATION_ID, education);
+        resultIntent.putExtra(KEY_EDUCATION, education);
         setResult(RESULT_OK, resultIntent);
         finish();
     }

@@ -90,7 +90,7 @@ public class WorkExperienceEditActivity extends EditBaseActivity<WorkExperience>
         workExperience.setJobDescription(jobDescription);
 
         Intent resultIntent = new Intent();
-        resultIntent.putExtra(KEY_WORK_EXPERIENCE_ID, workExperience);
+        resultIntent.putExtra(KEY_WORK_EXPERIENCE, workExperience);
         setResult(RESULT_OK, resultIntent);
         finish();
 

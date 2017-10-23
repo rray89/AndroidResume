@@ -70,7 +70,7 @@ public class ProjectEditActivity extends EditBaseActivity<Project> {
         project.setProjectDetails(projectDetails);
 
         Intent resultIntent = new Intent();
-        resultIntent.putExtra(KEY_PROJECT_ID, project);
+        resultIntent.putExtra(KEY_PROJECT, project);
         setResult(RESULT_OK, resultIntent);
         finish();
 
