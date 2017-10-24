@@ -20,14 +20,14 @@ public class ImageUtils {
                                  @NonNull Uri uri,
                                  @NonNull ImageView imageView) {
 
-//        try {
-//            Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
-//            imageView.setImageBitmap(bitmap);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            Log.e("MainActivity", "IOException");
-//            return;
-//        }
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
+            imageView.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("MainActivity", "IOException");
+            return;
+        }
 
     }
 

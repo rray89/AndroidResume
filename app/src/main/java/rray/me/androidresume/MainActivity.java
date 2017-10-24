@@ -1,5 +1,6 @@
 package rray.me.androidresume;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -24,6 +25,7 @@ import rray.me.androidresume.models.WorkExperience;
 import rray.me.androidresume.util.DateUtils;
 import rray.me.androidresume.util.ImageUtils;
 import rray.me.androidresume.util.ModelUtils;
+import rray.me.androidresume.util.PermissionUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -148,7 +150,12 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView userPicture = (ImageView) findViewById(R.id.iv_user_picture);
         if (basicInfo.getImageUri() != null) {
-            ImageUtils.loadImage(this, basicInfo.getImageUri(), userPicture);
+            if (!PermissionUtils.checkPermission(MainActivity.this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                ImageUtils.loadImage(this, basicInfo.getImageUri(), userPicture);
+            } else {
+                PermissionUtils.requestReadExternalStoragePermission(MainActivity.this);
+            }
         } else {
             userPicture.setImageResource(R.drawable.ic_account_circle_black_48dp);
         }

@@ -117,11 +117,17 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         imageView.setTag(imageUri);
-        ImageUtils.loadImage(this, imageUri, imageView);
+        if (!PermissionUtils.checkPermission(BasicInfoEditActivity.this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            PermissionUtils.requestReadExternalStoragePermission(BasicInfoEditActivity.this);
+        } else {
+            ImageUtils.loadImage(this, imageUri, imageView);
+        }
     }
 
     private void pickImage() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        //changed ACTION_PICK to ACTION_OPEN_DOCUMENT
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(Intent.createChooser(intent, "Select picture"), REQ_CODE_PICK_IMAGE);
     }
 }
