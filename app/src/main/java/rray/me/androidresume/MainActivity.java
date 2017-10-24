@@ -70,24 +70,24 @@ public class MainActivity extends AppCompatActivity {
                         updateEducation(education);
                     }
                     break;
-//                case REQ_CODE_EDIT_WORK_EXPERIENCE:
-//                    String workExperienceId = data.getStringExtra(WorkExperienceEditActivity.KEY_WORK_EXPERIENCE_ID);
-//                    if (workExperienceId != null) {
-//                        deleteWorkExperience(workExperienceId);
-//                    } else {
-//                        WorkExperience workExperience = data.getParcelableExtra(WorkExperienceEditActivity.KEY_WORK_EXPERIENCE);
-//                        updateWorkExperience(workExperience);
-//                    }
-//                    break;
-//                case REQ_CODE_EDIT_PROJECT:
-//                    String projectId = data.getStringExtra(ProjectEditActivity.KEY_PROJECT_ID);
-//                    if (projectId != null) {
-//                        deleteProject(projectId);
-//                    } else {
-//                        Project project = data.getParcelableExtra(ProjectEditActivity.KEY_PROJECT);
-//                        updateProject(project);
-//                    }
-//                    break;
+                case REQ_CODE_EDIT_WORK_EXPERIENCE:
+                    String workExperienceId = data.getStringExtra(WorkExperienceEditActivity.KEY_WORK_EXPERIENCE_ID);
+                    if (workExperienceId != null) {
+                        deleteWorkExperience(workExperienceId);
+                    } else {
+                        WorkExperience workExperience = data.getParcelableExtra(WorkExperienceEditActivity.KEY_WORK_EXPERIENCE);
+                        updateWorkExperience(workExperience);
+                    }
+                    break;
+                case REQ_CODE_EDIT_PROJECT:
+                    String projectId = data.getStringExtra(ProjectEditActivity.KEY_PROJECT_ID);
+                    if (projectId != null) {
+                        deleteProject(projectId);
+                    } else {
+                        Project project = data.getParcelableExtra(ProjectEditActivity.KEY_PROJECT);
+                        updateProject(project);
+                    }
+                    break;
             }
         }
     }
@@ -169,9 +169,11 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_education_list);
         educationLayout.removeAllViews();
         for (Education education: educationList) {
-            View educationView = getLayoutInflater().inflate(R.layout.education_item, null);
-            setupEducationView(educationView, education);
-            educationLayout.addView(educationView);
+            if (education != null) {
+                View educationView = getLayoutInflater().inflate(R.layout.education_item, null);
+                setupEducationView(educationView, education);
+                educationLayout.addView(educationView);
+            }
         }
     }
 
@@ -207,9 +209,11 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout workExperienceLayout = (LinearLayout) findViewById(R.id.ll_work_experience_list);
         workExperienceLayout.removeAllViews();
         for (WorkExperience w: workExperienceList) {
-            View workExperienceView = getLayoutInflater().inflate(R.layout.work_experience_item, null);
-            setupWorkExperienceView(workExperienceView, w);
-            workExperienceLayout.addView(workExperienceView);
+            if (w != null) {
+                View workExperienceView = getLayoutInflater().inflate(R.layout.work_experience_item, null);
+                setupWorkExperienceView(workExperienceView, w);
+                workExperienceLayout.addView(workExperienceView);
+            }
         }
     }
 
@@ -245,10 +249,12 @@ public class MainActivity extends AppCompatActivity {
     private void setupProjectsUI() {
         LinearLayout projectLayout = (LinearLayout) findViewById(R.id.ll_project_list);
         projectLayout.removeAllViews();
-        for (Project project: projectList) {
-            View projectView = getLayoutInflater().inflate(R.layout.project_item, null);
-            setupProjectView(projectView, project);
-            projectLayout.addView(projectView);
+        for (Project project : projectList) {
+            if (project != null) {
+                View projectView = getLayoutInflater().inflate(R.layout.project_item, null);
+                setupProjectView(projectView, project);
+                projectLayout.addView(projectView);
+            }
         }
     }
 

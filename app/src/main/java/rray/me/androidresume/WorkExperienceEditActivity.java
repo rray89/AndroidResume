@@ -45,14 +45,14 @@ public class WorkExperienceEditActivity extends EditBaseActivity<WorkExperience>
                 .setText(DateUtils.dateToString(workExperience.getStartDate()));
         ((EditText) findViewById(R.id.et_work_experience_edit_end_date))
                 .setText(DateUtils.dateToString(workExperience.getEndDate()));
-        ((EditText) findViewById(R.id.et_education_edit_courses))
+        ((EditText) findViewById(R.id.et_work_experience_job_description))
                 .setText(TextUtils.join("\n", workExperience.getJobDescription()));
 
-        findViewById(R.id.tv_education_edit_delete).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.tv_work_experience_edit_delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent resultIntent = new Intent();
-                resultIntent.putExtra(KEY_WORK_EXPERIENCE, workExperience.getId());
+                resultIntent.putExtra(KEY_WORK_EXPERIENCE_ID, workExperience.getId());
                 setResult(Activity.RESULT_OK, resultIntent);
                 finish();
             }
