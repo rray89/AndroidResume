@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQ_CODE_EDIT_PROJECT = 102;
     private static final int REQ_CODE_EDIT_WORK_EXPERIENCE = 103;
 
-    private static final String MODEL_BASIC_INFO = "basic_info";
+    private static final String MODEL_BASIC_INFO = "basicInfo";
     private static final String MODEL_EDUCATIONS = "educationList";
     private static final String MODEL_PROJECTS = "projectList";
-    private static final String MODEL_WORK_EXPERIENCES = "work_experiences";
+    private static final String MODEL_WORK_EXPERIENCES = "workExperienceList";
 
     private BasicInfo basicInfo;
     private List<Education> educationList;
@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
+                //if request code is REQ_CODE_EDIT_BASIC_INFO
+                //then call method updateBasicInfo
+                //there is only one BASIC INFO
                 case REQ_CODE_EDIT_BASIC_INFO:
                     BasicInfo basicInfo = data.getParcelableExtra(BasicInfoEditActivity.KEY_BASIC_INFO);
                     updateBasicInfo(basicInfo);
@@ -94,12 +97,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //method setUpUI
     //
     private void setUpUI() {
         setContentView(R.layout.activity_main);
 
         //activate edit education button
-        ImageButton addEducationBtn = (ImageButton) findViewById(R.id.ib_add_education_btn);
+        ImageButton addEducationBtn = findViewById(R.id.ib_add_education_btn);
         addEducationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton addWorkExperienceBtn = (ImageButton) findViewById(R.id.ib_add_work_experience_btn);
+        ImageButton addWorkExperienceBtn = findViewById(R.id.ib_add_work_experience_btn);
         addWorkExperienceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton addProjectBtn = (ImageButton) findViewById(R.id.ib_add_project_btn);
+        ImageButton addProjectBtn = findViewById(R.id.ib_add_project_btn);
         addProjectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tv_email)).setText(email);
         ((TextView) findViewById(R.id.tv_personal_site)).setText(personalSite);
 
-        ImageView userPicture = (ImageView) findViewById(R.id.iv_user_picture);
+        ImageView userPicture = findViewById(R.id.iv_user_picture);
         if (basicInfo.getImageUri() != null) {
             if (!PermissionUtils.checkPermission(MainActivity.this,
                     Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -173,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
     //method setupEducation to display Educations session
     private void setupEducationsUI() {
 
-        LinearLayout educationLayout = (LinearLayout) findViewById(R.id.ll_education_list);
+        LinearLayout educationLayout = findViewById(R.id.ll_education_list);
         educationLayout.removeAllViews();
         for (Education education: educationList) {
             if (education != null) {
@@ -200,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) educationView.findViewById(R.id.tv_education_courses))
                 .setText(bulletFormatString(education.courses));
 
-        ImageButton editEducation = (ImageButton) educationView.findViewById(R.id.ib_edit_education_item_btn);
+        ImageButton editEducation = educationView.findViewById(R.id.ib_edit_education_item_btn);
         editEducation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
     //method setupWorkExperiencesUI to display Work Experiences session
     private void setupWorkExperiencesUI() {
-        LinearLayout workExperienceLayout = (LinearLayout) findViewById(R.id.ll_work_experience_list);
+        LinearLayout workExperienceLayout = findViewById(R.id.ll_work_experience_list);
         workExperienceLayout.removeAllViews();
         for (WorkExperience w: workExperienceList) {
             if (w != null) {
@@ -240,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) workExperienceView.findViewById(R.id.tv_work_experience_job_description))
                 .setText(bulletFormatString(workExperience.getJobDescription()));
 
-        ImageButton editEducation = (ImageButton) workExperienceView.findViewById(R.id.ib_edit_work_experience_item_btn);
+        ImageButton editEducation = workExperienceView.findViewById(R.id.ib_edit_work_experience_item_btn);
         editEducation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -254,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
 
     //method setupProjectsUI
     private void setupProjectsUI() {
-        LinearLayout projectLayout = (LinearLayout) findViewById(R.id.ll_project_list);
+        LinearLayout projectLayout = findViewById(R.id.ll_project_list);
         projectLayout.removeAllViews();
         for (Project project : projectList) {
             if (project != null) {
@@ -373,8 +377,8 @@ public class MainActivity extends AppCompatActivity {
     public static String bulletFormatString (List<String> strings) {
 
         StringBuilder sb = new StringBuilder();
-        for (String string: strings) {
-            sb.append('\t').append('-').append(' ').append(string).append('\n');
+        for (String s: strings) {
+            sb.append('\t').append('-').append(' ').append(s).append('\n');
         }
         return sb.toString();
 

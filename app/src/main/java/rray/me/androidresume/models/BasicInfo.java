@@ -1,12 +1,18 @@
+/*
+ * Class BasicInfo implements Parcelable
+ *
+ * Including 4 parameters:
+ * String name: user's name
+ * String email: user's email
+ * String personalSite: user's personal site
+ * Uri imageUri: user portrait's URI
+ */
+
 package rray.me.androidresume.models;
 
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-/**
- * Created by RRay on 7/19/2017.
- */
 
 public class BasicInfo implements Parcelable{
 

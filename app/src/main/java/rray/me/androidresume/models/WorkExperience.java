@@ -1,3 +1,16 @@
+/*
+ * Class WorkExperience implements Parcelable
+ *
+ * Including 6 parameters:
+  * String id: randomly generated ID
+  * String companyName: company name
+  * String jobTitle: job title
+  * Date startDate: start date of job
+  * Date endDate: end date of job
+  * List<String> jobDescription: job description
+ *
+ */
+
 package rray.me.androidresume.models;
 
 import android.os.Parcel;
@@ -6,10 +19,6 @@ import android.os.Parcelable;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
-/**
- * Created by RRay on 7/19/2017.
- */
 
 public class WorkExperience implements Parcelable {
     private String id;

@@ -1,3 +1,13 @@
+/*
+ * Class Project implements Parcelable
+ *
+ * Including 3 parameters:
+  * String id: randomly generated ID
+  * String projectName: project name
+  * List<String> projectDetails: details of project
+ *
+ */
+
 package rray.me.androidresume.models;
 
 import android.os.Parcel;
@@ -5,10 +15,6 @@ import android.os.Parcelable;
 
 import java.util.List;
 import java.util.UUID;
-
-/*
- * Created by RRay on 7/20/2017.
- */
 
 public class Project implements Parcelable {
 

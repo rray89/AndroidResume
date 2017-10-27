@@ -1,3 +1,17 @@
+
+/*
+ * Class Education implements Parcelable
+ *
+ * Including 6 parameters:
+  * String id: randomly generated ID
+  * String institutionName: school name
+  * String degree: degree
+  * Date startDate: start date of school
+  * Date endDate: end date of school
+  * List<String> courses: highlight of core courses
+ *
+ */
+
 package rray.me.androidresume.models;
 
 import android.os.Parcel;
@@ -6,12 +20,6 @@ import android.os.Parcelable;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
-import rray.me.androidresume.util.DateUtils;
-
-/**
- * Created by RRay on 7/19/2017.
- */
 
 public class Education implements Parcelable{
     public String id;
