@@ -8,7 +8,6 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.pm.ActivityInfoCompat;
 
 /**
  * Created by RRay on 9/25/2017.
@@ -16,7 +15,8 @@ import android.support.v4.content.pm.ActivityInfoCompat;
 
 public class PermissionUtils {
 
-    public static final int REQ_CODE_WRITE_EXTERNAL_STORAGE = 200;
+    public static final int REQ_CODE_READ_EXTERNAL_STORAGE = 200;
+    //public static final int REQ_CODE_WRITE_EXTERNAL_STORAGE = 201;
 
     public static boolean checkPermission(@NonNull Context context,
                                           @NonNull String permission) {
@@ -25,15 +25,19 @@ public class PermissionUtils {
                 ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED;
     }
 
-    public static void requestPermissions (@NonNull Activity activity,
+    private static void requestPermissions (@NonNull Activity activity,
                                            @NonNull String[] permissions,
                                            int reqCode) {
         ActivityCompat.requestPermissions(activity, permissions, reqCode);
     }
 
     public static void requestReadExternalStoragePermission(@NonNull Activity activity) {
-        requestPermissions(activity, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
-                REQ_CODE_WRITE_EXTERNAL_STORAGE);
+        String[] permission = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
+        requestPermissions(activity, permission, REQ_CODE_READ_EXTERNAL_STORAGE);
+    }
+
+    public static void requstGooglePhotosPermission(@NonNull Activity activity) {
+
     }
 
 }

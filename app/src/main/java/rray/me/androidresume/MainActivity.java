@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             switch (requestCode) {
                 //if request code is REQ_CODE_EDIT_BASIC_INFO
                 //then call method updateBasicInfo
-                //there is only one BASIC INFO
                 case REQ_CODE_EDIT_BASIC_INFO:
                     BasicInfo basicInfo = data.getParcelableExtra(BasicInfoEditActivity.KEY_BASIC_INFO);
                     updateBasicInfo(basicInfo);
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //method setUpUI
-    //
+    //set up add buttons and call setUi methods
     private void setUpUI() {
         setContentView(R.layout.activity_main);
 
@@ -156,10 +155,9 @@ public class MainActivity extends AppCompatActivity {
         if (basicInfo.getImageUri() != null) {
             if (!PermissionUtils.checkPermission(MainActivity.this,
                     Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                ImageUtils.loadImage(this, basicInfo.getImageUri(), userPicture);
-            } else {
                 PermissionUtils.requestReadExternalStoragePermission(MainActivity.this);
             }
+            ImageUtils.loadImage(this, basicInfo.getImageUri(), userPicture);
         } else {
             userPicture.setImageResource(R.drawable.ic_account_circle_black_48dp);
         }
@@ -204,8 +202,8 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) educationView.findViewById(R.id.tv_education_courses))
                 .setText(bulletFormatString(education.courses));
 
-        ImageButton editEducation = educationView.findViewById(R.id.ib_edit_education_item_btn);
-        editEducation.setOnClickListener(new View.OnClickListener() {
+        ImageButton editEducationBtn = educationView.findViewById(R.id.ib_edit_education_item_btn);
+        editEducationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EducationEditActivity.class);

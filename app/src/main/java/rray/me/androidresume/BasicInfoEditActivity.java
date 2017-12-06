@@ -25,7 +25,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQ_CODE_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+        if(requestCode == REQ_CODE_PICK_IMAGE && resultCode == Activity.RESULT_OK && data != null) {
             Uri imageUri = data.getData();
             if(imageUri != null) {
                 showImage(imageUri);
@@ -39,7 +39,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if(requestCode == PermissionUtils.REQ_CODE_WRITE_EXTERNAL_STORAGE
+        if(requestCode == PermissionUtils.REQ_CODE_READ_EXTERNAL_STORAGE
                 && grantResults.length > 0
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             pickImage();
@@ -112,11 +112,13 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
         return getIntent().getParcelableExtra(KEY_BASIC_INFO);
     }
 
+    //method showImage
     private void showImage(@NonNull Uri imageUri) {
-        ImageView imageView = (ImageView) findViewById(R.id.iv_basic_info_edit_image);
+        ImageView imageView = findViewById(R.id.iv_basic_info_edit_image);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         imageView.setTag(imageUri);
+        imageView.setImageURI(imageUri);
         if (!PermissionUtils.checkPermission(BasicInfoEditActivity.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)) {
             PermissionUtils.requestReadExternalStoragePermission(BasicInfoEditActivity.this);
@@ -128,6 +130,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
     private void pickImage() {
         //changed ACTION_PICK to ACTION_OPEN_DOCUMENT
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
         startActivityForResult(Intent.createChooser(intent, "Select picture"), REQ_CODE_PICK_IMAGE);
     }
 }
